@@ -18,4 +18,4 @@ Full documentation can be found in the repository library, which can be found [h
 - **SingleStorySample** - work with a single story
 - **UserChangeSample** - change user in SDK
 - **TagsPlaceholdersSample** - work with placeholders and tags
-- **NotificationsSample** - tracking basic notifications from SDK with CsEventBus (read more in full documentation)
+- **NotificationSubscribeSample** - tracking basic notifications from SDK with CsEventBus (read more in full documentation)
