@@ -1,6 +1,6 @@
 # InAppStorySDK Samples
 Java samples with basics integration for InAppStorySDK.
-Full documentation can be found in the repository library, which can be found [here](https://github.com/inappstory/android-sdk)
+Full documentation can be found in the [InAppStorySDK repository](https://github.com/inappstory/android-sdk)
 
 ### Get started
 
