@@ -1,6 +1,8 @@
 package com.inappstory.demo.advanced;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -29,8 +31,19 @@ public class AdvancedCellSample extends AppCompatActivity {
                         .csListItemTitleColor(Color.RED)
                         .csListItemTitleSize(Sizes.dpToPxExt(12))
                         .csListItemMargin(Sizes.dpToPxExt(4))
+                        .csCustomFont(createTypeface())
                         .csListItemBorderColor(Color.GREEN);
         return appearanceManager;
+    }
+
+    private Typeface createTypeface() {
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "synerga_pro_reg.otf");
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            typeface = getResources().getFont(R.font.font1);
+        }
+
+        return typeface;
     }
 
     private void showStories() {

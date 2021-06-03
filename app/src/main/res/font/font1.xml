@@ -3,5 +3,5 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/drukwide" />
+        android:font="@font/synerga_pro_it" />
 </font-family>
