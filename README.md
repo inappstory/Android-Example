@@ -14,8 +14,8 @@ Full documentation can be found in the repository library, which can be found [h
 - **CustomCellSample** - creating your own list cell that replaces defaults
 - **FavoritesSample** - enable favorites feature and display a list of favorite stories
 - **ReaderCustomizationSample** - customize settings in stories reader
-- **OnboardingController** -  work with onboarding stories
-- **SingleStoryController** - work with a single story
-- **UserChangeController** - change user in SDK
-- **TagsPlaceholdersController** - work with placeholders and tags
-- **NotificationsController** - tracking basic notifications from SDK with CsEventBus (read more in full documentation)
+- **OnboardingSample** -  work with onboarding stories
+- **SingleStorySample** - work with a single story
+- **UserChangeSample** - change user in SDK
+- **TagsPlaceholdersSample** - work with placeholders and tags
+- **NotificationsSample** - tracking basic notifications from SDK with CsEventBus (read more in full documentation)
