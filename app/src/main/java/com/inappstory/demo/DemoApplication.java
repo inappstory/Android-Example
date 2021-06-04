@@ -17,9 +17,6 @@ public class DemoApplication extends Application {
             new InAppStoryManager.Builder()
                     .userId(USER_ID)
                     .context(getApplicationContext())
-                    .hasLike(true)
-                    .hasFavorite(true)
-                    .hasShare(true)
                     .create();
         } catch (DataException e) {
             return;
