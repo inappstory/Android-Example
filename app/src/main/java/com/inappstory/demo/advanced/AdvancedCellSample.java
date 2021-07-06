@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.inappstory.demo.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.exceptions.DataException;
+import com.inappstory.sdk.stories.api.models.Image;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.utils.Sizes;
 
@@ -23,7 +24,7 @@ public class AdvancedCellSample extends AppCompatActivity {
         showStories();
     }
 
-    private AppearanceManager generateAppearanceManager() {
+    private AppearanceManager generateAppearanceManager(boolean isHQ) {
         AppearanceManager appearanceManager =
                 new AppearanceManager()
                         .csListItemWidth(Sizes.dpToPxExt(110))
@@ -32,6 +33,7 @@ public class AdvancedCellSample extends AppCompatActivity {
                         .csListItemTitleSize(Sizes.dpToPxExt(12))
                         .csListItemMargin(Sizes.dpToPxExt(4))
                         .csCustomFont(createTypeface())
+                        .csCoverQuality(isHQ ? Image.QUALITY_HIGH : Image.QUALITY_MEDIUM)
                         .csListItemBorderColor(Color.GREEN);
         return appearanceManager;
     }
@@ -48,7 +50,8 @@ public class AdvancedCellSample extends AppCompatActivity {
 
     private void showStories() {
         StoriesList storiesList = findViewById(R.id.stories_list);
-        storiesList.setAppearanceManager(generateAppearanceManager());
+        storiesList.setAppearanceManager(generateAppearanceManager(
+                getIntent().getBooleanExtra("isHQ", false)));
         try {
             storiesList.loadStories();
         } catch (DataException e) {

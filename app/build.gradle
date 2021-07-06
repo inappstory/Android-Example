@@ -34,7 +34,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
     implementation 'androidx.webkit:webkit:1.4.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.github.inappstory:android-sdk:0d6ecef7617a0436cb00d2d98be0a70bd777ba04'
+    implementation 'com.github.inappstory:android-sdk:301e08e241a118e8db41f0a9330bff944f31f03a'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
 
 import com.inappstory.demo.advanced.AdvancedCellSample;
 import com.inappstory.demo.custom.CustomCellSample;
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatCheckBox isHQcb = findViewById(R.id.isHQ);
         findViewById(R.id.simple).setOnClickListener(v -> showActivity(BasicIntegrationSample.class));
-        findViewById(R.id.advanced).setOnClickListener(v -> showActivity(AdvancedCellSample.class));
+        findViewById(R.id.advanced).setOnClickListener(v -> showActivity(AdvancedCellSample.class, isHQcb.isChecked()));
         findViewById(R.id.custom).setOnClickListener(v -> showActivity(CustomCellSample.class));
         findViewById(R.id.favorites).setOnClickListener(v -> showActivity(FavoritesSample.class));
         findViewById(R.id.custom_reader).setOnClickListener(v -> showActivity(ReaderCustomizationSample.class));
@@ -37,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void showActivity(Class activityClass) {
         Intent intent = new Intent(MainActivity.this, activityClass);
+        startActivity(intent);
+    }
+
+
+    private void showActivity(Class activityClass, boolean isHQ) {
+        Intent intent = new Intent(MainActivity.this, activityClass);
+        intent.putExtra("isHQ", isHQ);
         startActivity(intent);
     }
 

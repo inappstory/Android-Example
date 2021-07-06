@@ -19,8 +19,10 @@ public class BasicIntegrationSample extends AppCompatActivity {
         showStories();
     }
 
+    StoriesList storiesList;
+
     private void showStories() {
-        StoriesList storiesList = findViewById(R.id.stories_list);
+        storiesList = findViewById(R.id.stories_list);
         storiesList.setAppearanceManager(new AppearanceManager());
         try {
             storiesList.loadStories();
