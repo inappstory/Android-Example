@@ -29,6 +29,7 @@ public class ReaderCustomizationSample extends AppCompatActivity {
                         .csHasShare(true)
                         .csClosePosition(AppearanceManager.BOTTOM_LEFT)
                         .csStoryReaderAnimation(AppearanceManager.ANIMATION_DEPTH)
+                        .csTimerGradientEnable(false)
                         .csNavBarColor(Color.BLACK)
                         .csNightNavBarColor(Color.DKGRAY)
                         .csCloseIcon(R.drawable.custom_close_icon)
