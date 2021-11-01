@@ -19,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".simple.BasicIntegrationSample"/>
         <activity android:name=".advanced.AdvancedCellSample"/>
         <activity android:name=".custom.CustomCellSample"/>
@@ -36,6 +37,9 @@
         <activity android:name=".userchange.UserChangeSample"/>
 
         <activity android:name=".notification.NotificationSubscribeSample"/>
+        <activity android:name=".goodswidget.DefaultWidgetSample"/>
+        <activity android:name=".goodswidget.CustomCellWidgetSample"/>
+        <activity android:name=".goodswidget.CustomWidgetSample"/>
     </application>
 
 </manifest>

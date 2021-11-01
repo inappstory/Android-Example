@@ -11,6 +11,9 @@ import com.inappstory.demo.advanced.AdvancedCellSample;
 import com.inappstory.demo.custom.CustomCellSample;
 import com.inappstory.demo.customreader.ReaderCustomizationSample;
 import com.inappstory.demo.favorites.FavoritesSample;
+import com.inappstory.demo.goodswidget.CustomCellWidgetSample;
+import com.inappstory.demo.goodswidget.CustomWidgetSample;
+import com.inappstory.demo.goodswidget.DefaultWidgetSample;
 import com.inappstory.demo.notification.NotificationSubscribeSample;
 import com.inappstory.demo.onboarding.OnboardingSample;
 import com.inappstory.demo.simple.BasicIntegrationSample;
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.change_user).setOnClickListener(v -> showActivity(UserChangeSample.class));
         findViewById(R.id.tags).setOnClickListener(v -> showActivity(TagsPlaceholdersSample.class));
         findViewById(R.id.notification).setOnClickListener(v -> showActivity(NotificationSubscribeSample.class));
+        findViewById(R.id.base_carousel).setOnClickListener(v -> showActivity(DefaultWidgetSample.class));
+        findViewById(R.id.custom_carousel).setOnClickListener(v -> showActivity(CustomCellWidgetSample.class));
+        findViewById(R.id.custom_goods_widget).setOnClickListener(v -> showActivity(CustomWidgetSample.class));
     }
 
     private void showActivity(Class activityClass) {

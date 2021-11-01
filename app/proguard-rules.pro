@@ -12,10 +12,12 @@
 #   public *;
 #}
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-keepclassmembers class * {
+    @com.inappstory.sdk.eventbus.CsSubscribe <methods>;
+}
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+-keep enum com.inappstory.sdk.eventbus.CsThreadMode { *; }
+
+-keep public class com.inappstory.sdk.** {
+    *;
+}

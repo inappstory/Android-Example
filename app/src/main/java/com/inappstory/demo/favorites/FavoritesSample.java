@@ -38,14 +38,14 @@ public class FavoritesSample extends AppCompatActivity {
     private AppearanceManager generateCustomAppearanceManager() {
 
         AppearanceManager appearanceManager =
-                new AppearanceManager().csHasFavorite(true);
+                new AppearanceManager();//.csHasFavorite(true);
         return appearanceManager;
     }
 
     private AppearanceManager generateSimpleAppearanceManager() {
         AppearanceManager appearanceManager =
                 new AppearanceManager()
-                        .csHasFavorite(true)
+                    //    .csHasFavorite(true)
                         .csListItemInterface(new IStoriesListItem() {
                             @Override
                             public View getView() {
@@ -66,6 +66,7 @@ public class FavoritesSample extends AppCompatActivity {
                                 }
                             }
 
+
                             @Override
                             public void setImage(View itemView, String url, int backgroundColor) {
                                 showImage(url, backgroundColor, itemView.findViewById(R.id.image));
@@ -73,6 +74,10 @@ public class FavoritesSample extends AppCompatActivity {
 
                             @Override
                             public void setHasAudio(View itemView, boolean hasAudio) {
+
+                            }
+
+                            public void setHasVideo(View view, String s, String s1, int i) {
 
                             }
 

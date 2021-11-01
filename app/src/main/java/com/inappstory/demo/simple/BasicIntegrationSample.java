@@ -1,6 +1,7 @@
 package com.inappstory.demo.simple;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class BasicIntegrationSample extends AppCompatActivity {
         } catch (DataException e) {
             e.printStackTrace();
         }
+
     }
 
 

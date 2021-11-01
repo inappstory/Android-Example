@@ -24,18 +24,18 @@ public class ReaderCustomizationSample extends AppCompatActivity {
 
     private AppearanceManager generateAppearanceManager() {
         AppearanceManager appearanceManager =
-                new AppearanceManager()
-                        .csHasLike(true)
-                        .csHasShare(true)
-                        .csClosePosition(AppearanceManager.BOTTOM_LEFT)
-                        .csStoryReaderAnimation(AppearanceManager.ANIMATION_DEPTH)
-                        .csTimerGradientEnable(false)
-                        .csNavBarColor(Color.BLACK)
-                        .csNightNavBarColor(Color.DKGRAY)
-                        .csCloseIcon(R.drawable.custom_close_icon)
-                        .csShareIcon(R.drawable.share_state)
-                        .csLikeIcon(R.drawable.like_state)
-                        .csDislikeIcon(R.drawable.dislike_state);
+                new AppearanceManager();
+                        //.csHasLike(true)
+                      //  .csHasShare(true)
+        appearanceManager.csClosePosition(AppearanceManager.BOTTOM_LEFT);
+        appearanceManager.csStoryReaderAnimation(AppearanceManager.ANIMATION_DEPTH);
+                   //     .csTimerGradientEnable(false)
+        appearanceManager.csNavBarColor(Color.BLACK);
+                 //       .csNightNavBarColor(Color.DKGRAY)
+                     //   .csCloseIcon(R.drawable.custom_close_icon)
+                  //      .csShareIcon(R.drawable.share_state)
+                 //       .csLikeIcon(R.drawable.like_state)
+                 //       .csDislikeIcon(R.drawable.dislike_state);
         return appearanceManager;
     }
 
