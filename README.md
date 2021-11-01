@@ -18,4 +18,7 @@ Full documentation can be found in the [InAppStorySDK repository](https://github
 - **SingleStorySample** - work with a single story
 - **UserChangeSample** - change user in SDK
 - **TagsPlaceholdersSample** - work with placeholders and tags
-- **NotificationSubscribeSample** - tracking basic notifications from SDK with CsEventBus (read more in full documentation)
+- **NotificationSubscribeSample** - tracking basic events from SDK with callbacks (read more in full documentation)
+- **DefaultWidgetSample** - work with default implementation of goods widget
+- **CustomCellWidgetSample** - customize items representation in goods widget (still using RecyclerView)
+- **CustomWidgetSample** - full customization for goods widget
