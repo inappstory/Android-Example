@@ -91,6 +91,7 @@ public class CustomWidgetSample extends AppCompatActivity {
                         textView.setText(sku);
                         textView.setOnClickListener(v1 -> {
                             //    InAppStoryManager.closeStoryReader();
+                            getGoodsDataCallback.itemClick(sku);
                             Toast.makeText(CustomWidgetSample.this, textView.getText(), Toast.LENGTH_LONG).show();
                         });
                         ((LinearLayout) container.findViewById(R.id.container)).addView(textView);
