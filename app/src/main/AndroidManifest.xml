@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:exported="true"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,26 +21,40 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".simple.BasicIntegrationSample"/>
-        <activity android:name=".advanced.AdvancedCellSample"/>
-        <activity android:name=".custom.CustomCellSample"/>
+        <activity android:name=".simple.BasicIntegrationSample"
+            android:exported="true"/>
+        <activity android:name=".advanced.AdvancedCellSample"
+            android:exported="true"/>
+        <activity android:name=".custom.CustomCellSample"
+            android:exported="true"/>
 
-        <activity android:name=".favorites.FavoritesSample"/>
-        <activity android:name=".favorites.StoryFavoritesActivity"/>
+        <activity android:name=".favorites.FavoritesSample"
+            android:exported="true"/>
+        <activity android:name=".favorites.StoryFavoritesActivity"
+            android:exported="true"/>
 
-        <activity android:name=".customreader.ReaderCustomizationSample"/>
+        <activity android:name=".customreader.ReaderCustomizationSample"
+            android:exported="true"/>
 
-        <activity android:name=".single.SingleStorySample"/>
-        <activity android:name=".onboarding.OnboardingSample"/>
+        <activity android:name=".single.SingleStorySample"
+            android:exported="true"/>
+        <activity android:name=".onboarding.OnboardingSample"
+            android:exported="true"/>
 
-        <activity android:name=".tagsplaceholders.TagsPlaceholdersSample"/>
+        <activity android:name=".tagsplaceholders.TagsPlaceholdersSample"
+            android:exported="true"/>
 
-        <activity android:name=".userchange.UserChangeSample"/>
+        <activity android:name=".userchange.UserChangeSample"
+            android:exported="true"/>
 
-        <activity android:name=".notification.NotificationSubscribeSample"/>
-        <activity android:name=".goodswidget.DefaultWidgetSample"/>
-        <activity android:name=".goodswidget.CustomCellWidgetSample"/>
-        <activity android:name=".goodswidget.CustomWidgetSample"/>
+        <activity android:name=".notification.NotificationSubscribeSample"
+            android:exported="true"/>
+        <activity android:name=".goodswidget.DefaultWidgetSample"
+            android:exported="true"/>
+        <activity android:name=".goodswidget.CustomCellWidgetSample"
+            android:exported="true"/>
+        <activity android:name=".goodswidget.CustomWidgetSample"
+            android:exported="true"/>
     </application>
 
 </manifest>
