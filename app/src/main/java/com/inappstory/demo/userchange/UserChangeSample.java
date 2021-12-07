@@ -28,6 +28,7 @@ public class UserChangeSample extends AppCompatActivity {
             String newUser = UUID.randomUUID().toString().substring(0, 8);
             try {
                 InAppStoryManager.getInstance().setUserId(newUser);
+                //showStories();
             } catch (DataException e) {
                 e.printStackTrace();
             }
