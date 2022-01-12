@@ -2,6 +2,8 @@ package com.inappstory.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,7 @@ import com.inappstory.demo.simple.BasicIntegrationSample;
 import com.inappstory.demo.single.SingleStorySample;
 import com.inappstory.demo.tagsplaceholders.TagsPlaceholdersSample;
 import com.inappstory.demo.userchange.UserChangeSample;
+import com.inappstory.sdk.InAppStoryManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.e("CheckIsNull_0", (InAppStoryManager.getInstance() != null) + "");
         AppCompatCheckBox isHQcb = findViewById(R.id.isHQ);
         findViewById(R.id.simple).setOnClickListener(v -> showActivity(BasicIntegrationSample.class));
         findViewById(R.id.advanced).setOnClickListener(v -> showActivity(AdvancedCellSample.class, isHQcb.isChecked()));

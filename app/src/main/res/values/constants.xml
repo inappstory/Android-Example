@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="csApiKey"></string>
+    <string name="csApiKey">SzKkY_bo8rbS-TMISO5HI7NSSlJo0AIJ</string>
+    <!--<string name="csApiKey">test-key</string>-->
 </resources>

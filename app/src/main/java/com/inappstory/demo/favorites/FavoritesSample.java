@@ -35,17 +35,18 @@ public class FavoritesSample extends AppCompatActivity {
         showStories();
     }
 
-    private AppearanceManager generateCustomAppearanceManager() {
+    private AppearanceManager generateSimpleAppearanceManager() {
 
         AppearanceManager appearanceManager =
-                new AppearanceManager();//.csHasFavorite(true);
+                new AppearanceManager().csHasFavorite(true);
         return appearanceManager;
     }
 
-    private AppearanceManager generateSimpleAppearanceManager() {
+    private AppearanceManager generateCustomAppearanceManager() {
         AppearanceManager appearanceManager =
                 new AppearanceManager()
-                    //    .csHasFavorite(true)
+                        .csHasFavorite(true)
+
                         .csListItemInterface(new IStoriesListItem() {
                             @Override
                             public View getView() {
@@ -56,6 +57,11 @@ public class FavoritesSample extends AppCompatActivity {
                             @Override
                             public View getVideoView() {
                                 return null;
+                            }
+
+                            @Override
+                            public void setId(View view, int i) {
+
                             }
 
                             @Override
@@ -77,14 +83,11 @@ public class FavoritesSample extends AppCompatActivity {
 
                             }
 
-                            public void setHasVideo(View view, String s, String s1, int i) {
-
-                            }
-
                             @Override
-                            public void setVideo(View itemView, String videoUrl, String url, int backgroundColor) {
+                            public void setVideo(View view, String s) {
 
                             }
+
 
                             @Override
                             public void setOpened(View itemView, boolean isOpened) {
@@ -94,52 +97,66 @@ public class FavoritesSample extends AppCompatActivity {
                         })
                         .csFavoriteListItemInterface(new IGetFavoriteListItem() {
                             @Override
-                            public View getFavoriteItem(List<FavoriteImage> list, int i) {
+                            public View getFavoriteItem() {
                                 View v = LayoutInflater.from(FavoritesSample.this)
                                         .inflate(R.layout.custom_story_list_item_favorite, null, false);
                                 return v;
                             }
 
                             @Override
-                            public void bindFavoriteItem(View favCell, List<FavoriteImage> favImages, int imagesCount) {
-                                Context context = FavoritesSample.this;
+                            public void bindFavoriteItem(View favCell, List<Integer> backColors, int count) {
                                 RelativeLayout imageViewLayout = favCell.findViewById(R.id.container);
+                                imageViewLayout.removeAllViews();
                                 AppCompatTextView title = favCell.findViewById(R.id.title);
                                 title.setText("Favorites");
-                                imageViewLayout.removeAllViews();
-                                if (favImages.size() > 0) {
-                                    AppCompatImageView image1 = new AppCompatImageView(context);
-                                    AppCompatImageView image2 = new AppCompatImageView(context);
-                                    RelativeLayout.LayoutParams piece2;
-                                    switch (favImages.size()) {
-                                        case 1:
-                                            image1.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
-                                                    RelativeLayout.LayoutParams.MATCH_PARENT));
-                                            image1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                                            showImage(favImages.get(0).getUrl(), favImages.get(0).getBackgroundColor(), image1);
-                                            imageViewLayout.addView(image1);
-                                            break;
-                                        default:
-                                            piece2 = new RelativeLayout.LayoutParams(Sizes.dpToPxExt(42),
-                                                    RelativeLayout.LayoutParams.MATCH_PARENT);
-                                            image1.setLayoutParams(new RelativeLayout.LayoutParams(Sizes.dpToPxExt(42),
-                                                    RelativeLayout.LayoutParams.MATCH_PARENT));
-                                            piece2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-                                            image2.setLayoutParams(piece2);
-
-                                            image1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                                            image2.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                                            showImage(favImages.get(0).getUrl(), favImages.get(0).getBackgroundColor(), image1);
-                                            showImage(favImages.get(1).getUrl(), favImages.get(1).getBackgroundColor(), image2);
-                                            imageViewLayout.addView(image1);
-                                            imageViewLayout.addView(image2);
-                                            break;
-                                    }
-                                }
+                                bindFavoriteCellImages(imageViewLayout, null, backColors, count);
                             }
+
+                            @Override
+                            public void setImages(View favCell, List<String> list, List<Integer> backColors, int count) {
+                                RelativeLayout imageViewLayout = favCell.findViewById(R.id.container);
+                                imageViewLayout.removeAllViews();
+                                bindFavoriteCellImages(imageViewLayout, list, backColors, count);
+                            }
+
+
                         });
 
         return appearanceManager;
+    }
+
+    void bindFavoriteCellImages(RelativeLayout imageViewLayout,
+                                List<String> list, List<Integer> backColors, int count) {
+        Context context = FavoritesSample.this;
+        if (count > 0) {
+            AppCompatImageView image1 = new AppCompatImageView(context);
+            AppCompatImageView image2 = new AppCompatImageView(context);
+            RelativeLayout.LayoutParams piece2;
+            switch (count) {
+                case 1:
+                    image1.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                            RelativeLayout.LayoutParams.MATCH_PARENT));
+                    image1.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    showImage(list != null ? list.get(0) : null, backColors.get(0), image1);
+                    imageViewLayout.addView(image1);
+                    break;
+                default:
+                    piece2 = new RelativeLayout.LayoutParams(Sizes.dpToPxExt(42),
+                            RelativeLayout.LayoutParams.MATCH_PARENT);
+                    image1.setLayoutParams(new RelativeLayout.LayoutParams(Sizes.dpToPxExt(42),
+                            RelativeLayout.LayoutParams.MATCH_PARENT));
+                    piece2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+                    image2.setLayoutParams(piece2);
+
+                    image1.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    image2.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                    showImage(list != null ? list.get(0) : null, backColors.get(0), image1);
+                    showImage(list != null ? list.get(1) : null, backColors.get(1), image2);
+                    imageViewLayout.addView(image1);
+                    imageViewLayout.addView(image2);
+                    break;
+            }
+        }
     }
 
     private void showStories() {
@@ -158,7 +175,7 @@ public class FavoritesSample extends AppCompatActivity {
 
     void showImage(String url, int backgroundColor, ImageView imageView) {
         if (url != null && !url.isEmpty()) {
-            ImageLoader.getInstance().displayImage(url, -1, imageView, InAppStoryService.getInstance().getFastCache());
+            ImageLoader.getInstance().displayImage(url, -1, imageView);
         } else {
             imageView.setBackgroundColor(backgroundColor);
         }

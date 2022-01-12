@@ -8,6 +8,10 @@
         android:layout_width="match_parent"
         android:id="@+id/stories_list"
         android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:id="@+id/userId"
+        android:layout_height="wrap_content"/>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:text="Change User ID"

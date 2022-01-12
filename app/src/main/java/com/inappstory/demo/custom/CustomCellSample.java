@@ -42,6 +42,11 @@ public class CustomCellSample extends AppCompatActivity {
                             }
 
                             @Override
+                            public void setId(View view, int i) {
+
+                            }
+
+                            @Override
                             public void setTitle(View itemView, String title, Integer color) {
                                 ((AppCompatTextView) itemView.findViewById(R.id.title)).setText(title);
                                 if (color != null) {
@@ -60,7 +65,7 @@ public class CustomCellSample extends AppCompatActivity {
                             }
 
                             @Override
-                            public void setVideo(View itemView, String videoUrl, String url, int backgroundColor) {
+                            public void setVideo(View view, String s) {
 
                             }
 

@@ -30,6 +30,7 @@ public class AdvancedCellSample extends AppCompatActivity {
                         .csListItemWidth(Sizes.dpToPxExt(110))
                         .csListItemHeight(Sizes.dpToPxExt(140))
                         .csListItemTitleColor(Color.RED)
+                        .csListItemRadius(Sizes.dpToPxExt(4))
                         .csListItemTitleSize(Sizes.dpToPxExt(12))
                         .csListItemMargin(Sizes.dpToPxExt(4))
                         .csCustomFont(createTypeface()) //If you want to share this font to dialogs in stories, set this appearanceManager as global
