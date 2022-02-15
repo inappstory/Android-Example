@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.inappstory.kotlinexamples">
+
+    <application
+        android:name=".DemoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.InAppStoryDemo">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.inappstory.kotlinexamples.simple.BasicIntegrationSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.advanced.AdvancedCellSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.custom.CustomCellSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.kotlinexamples.favorites.FavoritesSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.favorites.StoryFavoritesActivity"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.kotlinexamples.customreader.ReaderCustomizationSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.kotlinexamples.single.SingleStorySample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.onboarding.OnboardingSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.kotlinexamples.tagsplaceholders.TagsPlaceholdersSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.kotlinexamples.userchange.UserChangeSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.kotlinexamples.notification.NotificationSubscribeSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.goodswidget.DefaultWidgetSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.goodswidget.CustomCellWidgetSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.goodswidget.CustomWidgetSample"
+            android:exported="true"/>
+    </application>
+
+</manifest>

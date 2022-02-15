@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.inappstory.javaexamples">
+
+    <application
+        android:name="com.inappstory.javaexamples.DemoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.inappstory.javaexamples.MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.inappstory.javaexamples.simple.BasicIntegrationSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.javaexamples.advanced.AdvancedCellSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.javaexamples.custom.CustomCellSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.javaexamples.favorites.FavoritesSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.javaexamples.favorites.StoryFavoritesActivity"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.javaexamples.customreader.ReaderCustomizationSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.javaexamples.single.SingleStorySample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.javaexamples.onboarding.OnboardingSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.javaexamples.tagsplaceholders.TagsPlaceholdersSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.javaexamples.userchange.UserChangeSample"
+            android:exported="true"/>
+
+        <activity android:name="com.inappstory.javaexamples.notification.NotificationSubscribeSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.javaexamples.goodswidget.DefaultWidgetSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.javaexamples.goodswidget.CustomCellWidgetSample"
+            android:exported="true"/>
+        <activity android:name="com.inappstory.javaexamples.goodswidget.CustomWidgetSample"
+            android:exported="true"/>
+    </application>
+
+</manifest>

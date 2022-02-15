@@ -1,2 +1,3 @@
 rootProject.name='InAppStoryDemo'
-include ':app'
+include ':javaexamples'
+include ':kotlinexamples'

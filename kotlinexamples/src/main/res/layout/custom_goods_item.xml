@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="120dp"
+        android:id="@+id/container1"
+        android:layout_height="120dp">
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/border"
+            android:background="@drawable/custom_story_border"
+            android:layout_height="match_parent"/>
+        <androidx.cardview.widget.CardView
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="#FFF"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:id="@+id/image"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent" />
+                <View
+                    android:layout_width="match_parent"
+                    android:elevation="4dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/story_gradient_rounded" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_alignParentBottom="true"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:elevation="8dp"
+                    android:id="@+id/title"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:layout_margin="8dp"
+                    android:textColor="@color/white"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</RelativeLayout>
