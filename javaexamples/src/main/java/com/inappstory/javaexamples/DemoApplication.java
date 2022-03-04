@@ -8,15 +8,14 @@ import com.inappstory.sdk.exceptions.DataException;
 
 public class DemoApplication extends Application {
 
-    public static final String USER_ID = "cs_default_user1";
-
     public void onCreate() {
         super.onCreate();
+
         try {
             new InAppStoryManager.Builder()
-                    .userId("")
+                    .userId(getUserId())
                     .sandbox(false)
-                   // .testKey("test-key")
+                   //.testKey(getTestKey())
                     .context(getApplicationContext())
                     .create();
         } catch (DataException e) {
@@ -24,5 +23,16 @@ public class DemoApplication extends Application {
             return;
         }
 
+    }
+
+    public String getUserId() {
+        /*TODO*/
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+
+    public String getTestKey() {
+        /*TODO*/
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 }

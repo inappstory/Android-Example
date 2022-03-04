@@ -1,6 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext {
+        inappstory_version = "053d9fb28945c9b199554223938ef4b787915a62"
+    }
     repositories {
         google()
         mavenCentral()

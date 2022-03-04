@@ -19,8 +19,9 @@ class DemoApplication : Application() {
         super.onCreate()
         try {
             InAppStoryManager.Builder()
-                .userId("")
-                .sandbox(false) // .testKey("vyOQr1M9A42CyoAic6lgJupiorcI-0Fp")
+                .userId(getUserId())
+                .sandbox(true)
+                //.testKey(getTestKey())
                 .context(applicationContext)
                 .create()
         } catch (e: DataException) {
@@ -29,7 +30,12 @@ class DemoApplication : Application() {
         }
     }
 
-    companion object {
-        const val USER_ID = "cs_default_user1"
+    fun getUserId(): String {
+        TODO("Not implemented yet")
+    }
+
+
+    fun getTestKey(): String? {
+        TODO("Not implemented yet")
     }
 }
