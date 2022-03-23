@@ -25,7 +25,7 @@ public class DemoApplication extends Application {
 
     }
 
-    public String getUserId() {
+    public static String getUserId() {
         /*TODO*/
         throw new UnsupportedOperationException("Not implemented yet");
     }

@@ -2,6 +2,7 @@ package com.inappstory.javaexamples.favorites;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.inappstory.javaexamples.ImageLoader;
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.exceptions.DataException;
-import com.inappstory.sdk.imageloader.ImageLoader;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.ui.views.IGetFavoriteListItem;
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem;
 import com.inappstory.sdk.stories.utils.Sizes;
 
+import java.io.File;
 import java.util.List;
 
 public class FavoritesSample extends AppCompatActivity {
@@ -171,9 +173,14 @@ public class FavoritesSample extends AppCompatActivity {
         }
     }
 
-    void showImage(String url, int backgroundColor, ImageView imageView) {
-        if (url != null && !url.isEmpty()) {
-            ImageLoader.getInstance().displayImage(url, -1, imageView);
+    private void showImage(String path, int backgroundColor, ImageView imageView) {
+        if (path != null && !path.isEmpty()) {
+            Bitmap bmp = ImageLoader.decodeFile(new File(path));
+            if (bmp == null) {
+                imageView.setBackgroundColor(backgroundColor);
+            } else {
+                imageView.setImageBitmap(bmp);
+            }
         } else {
             imageView.setBackgroundColor(backgroundColor);
         }

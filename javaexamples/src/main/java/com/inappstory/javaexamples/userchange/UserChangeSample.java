@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 
+import com.inappstory.javaexamples.DemoApplication;
 import com.inappstory.javaexamples.R;
 import com.inappstory.javaexamples.favorites.StoryFavoritesActivity;
 import com.inappstory.sdk.AppearanceManager;
@@ -16,7 +17,6 @@ import com.inappstory.sdk.stories.ui.list.StoriesList;
 
 import java.util.UUID;
 
-import static com.inappstory.javaexamples.DemoApplication.USER_ID;
 
 public class UserChangeSample extends AppCompatActivity {
 
@@ -43,7 +43,7 @@ public class UserChangeSample extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         try {
-            InAppStoryManager.getInstance().setUserId(USER_ID);
+            InAppStoryManager.getInstance().setUserId(DemoApplication.getUserId());
         } catch (DataException e) {
             e.printStackTrace();
         }

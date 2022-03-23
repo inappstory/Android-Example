@@ -8,13 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.inappstory.kotlinexamples.ImageLoader
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
 import com.inappstory.sdk.exceptions.DataException
-import com.inappstory.sdk.imageloader.ImageLoader
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem
+import java.io.File
 
 class StoryFavoritesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,10 +86,17 @@ class StoryFavoritesActivity : AppCompatActivity() {
     }
 
     fun showImage(url: String?, backgroundColor: Int, imageView: ImageView) {
-        if (url != null && url.isNotEmpty()) {
-            ImageLoader.getInstance().displayImage(url, -1, imageView)
+        if (!url.isNullOrEmpty()) {
+            val bmp =  ImageLoader.decodeFile(File(url))
+            if (bmp == null) {
+                imageView.setBackgroundColor(backgroundColor);
+            } else {
+                imageView.setImageBitmap(bmp);
+            }
         } else {
             imageView.setBackgroundColor(backgroundColor)
         }
     }
+
+
 }

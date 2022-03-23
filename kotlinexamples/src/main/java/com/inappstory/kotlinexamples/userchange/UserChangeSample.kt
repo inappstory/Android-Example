@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
-import com.inappstory.kotlinexamples.DemoApplication.Companion.USER_ID
+import com.inappstory.kotlinexamples.DemoApplication
 import com.inappstory.kotlinexamples.R
 import com.inappstory.kotlinexamples.favorites.StoryFavoritesActivity
 import com.inappstory.sdk.AppearanceManager
@@ -34,7 +34,7 @@ class UserChangeSample : AppCompatActivity() {
 
     override fun onDestroy() {
         try {
-            InAppStoryManager.getInstance().userId = USER_ID
+            InAppStoryManager.getInstance().userId = DemoApplication.getUserId()
         } catch (e: DataException) {
             e.printStackTrace()
         }

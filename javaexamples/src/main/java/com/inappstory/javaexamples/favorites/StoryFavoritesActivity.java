@@ -1,5 +1,6 @@
 package com.inappstory.javaexamples.favorites;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +12,15 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.inappstory.javaexamples.ImageLoader;
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.InAppStoryManager;
 import com.inappstory.sdk.exceptions.DataException;
-import com.inappstory.sdk.imageloader.ImageLoader;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem;
+
+import java.io.File;
 
 public class StoryFavoritesActivity extends AppCompatActivity {
 
@@ -103,9 +106,14 @@ public class StoryFavoritesActivity extends AppCompatActivity {
         }
     }
 
-    void showImage(String url, int backgroundColor, ImageView imageView) {
-        if (url != null && !url.isEmpty()) {
-            ImageLoader.getInstance().displayImage(url, -1, imageView);
+    private void showImage(String path, int backgroundColor, ImageView imageView) {
+        if (path != null && !path.isEmpty()) {
+            Bitmap bmp = ImageLoader.decodeFile(new File(path));
+            if (bmp == null) {
+                imageView.setBackgroundColor(backgroundColor);
+            } else {
+                imageView.setImageBitmap(bmp);
+            }
         } else {
             imageView.setBackgroundColor(backgroundColor);
         }

@@ -1,5 +1,6 @@
 package com.inappstory.javaexamples.custom;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.inappstory.javaexamples.ImageLoader;
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.exceptions.DataException;
-import com.inappstory.sdk.imageloader.ImageLoader;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem;
+
+import java.io.File;
 
 public class CustomCellSample extends AppCompatActivity {
 
@@ -37,7 +40,8 @@ public class CustomCellSample extends AppCompatActivity {
 
                             @Override
                             public View getVideoView() {
-                                return null;
+                                return LayoutInflater.from(CustomCellSample.this)
+                                        .inflate(R.layout.custom_story_list_item, null, false);
                             }
 
                             @Override
@@ -87,11 +91,17 @@ public class CustomCellSample extends AppCompatActivity {
         }
     }
 
-    void showImage(String url, int backgroundColor, ImageView imageView) {
-        if (url != null && !url.isEmpty()) {
-            ImageLoader.getInstance().displayImage(url, -1, imageView);
+    private void showImage(String path, int backgroundColor, ImageView imageView) {
+        if (path != null && !path.isEmpty()) {
+            Bitmap bmp = ImageLoader.decodeFile(new File(path));
+            if (bmp == null) {
+                imageView.setBackgroundColor(backgroundColor);
+            } else {
+                imageView.setImageBitmap(bmp);
+            }
         } else {
             imageView.setBackgroundColor(backgroundColor);
         }
     }
+
 }

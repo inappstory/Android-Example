@@ -30,8 +30,10 @@ class DemoApplication : Application() {
         }
     }
 
-    fun getUserId(): String {
-        TODO("Not implemented yet")
+    companion object USER {
+        fun getUserId(): String {
+            TODO("Not implemented yet")
+        }
     }
 
 
