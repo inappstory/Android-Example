@@ -23,6 +23,8 @@
 
         <activity android:name="com.inappstory.javaexamples.simple.BasicIntegrationSample"
             android:exported="true"/>
+        <activity android:name="com.inappstory.javaexamples.feeds.FeedSample"
+            android:exported="true"/>
         <activity android:name="com.inappstory.javaexamples.advanced.AdvancedCellSample"
             android:exported="true"/>
         <activity android:name="com.inappstory.javaexamples.custom.CustomCellSample"
