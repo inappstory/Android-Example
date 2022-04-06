@@ -23,7 +23,7 @@ public class OnboardingSample extends AppCompatActivity {
         setContentView(R.layout.activity_base_list);
         InAppStoryManager.getInstance().setOnboardingLoadCallback(new OnboardingLoadCallback() {
             @Override
-            public void onboardingLoad(int count) {
+            public void onboardingLoad(int count, String feed) {
 
             }
         });

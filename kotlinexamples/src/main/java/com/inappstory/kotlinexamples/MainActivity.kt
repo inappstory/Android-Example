@@ -9,6 +9,7 @@ import com.inappstory.kotlinexamples.advanced.AdvancedCellSample
 import com.inappstory.kotlinexamples.custom.CustomCellSample
 import com.inappstory.kotlinexamples.customreader.ReaderCustomizationSample
 import com.inappstory.kotlinexamples.favorites.FavoritesSample
+import com.inappstory.kotlinexamples.feeds.FeedSample
 import com.inappstory.kotlinexamples.goodswidget.CustomCellWidgetSample
 import com.inappstory.kotlinexamples.goodswidget.CustomWidgetSample
 import com.inappstory.kotlinexamples.goodswidget.DefaultWidgetSample
@@ -37,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.custom).setOnClickListener {
             showActivity(
                 CustomCellSample::class.java
+            )
+        }
+        findViewById<View>(R.id.feeds).setOnClickListener {
+            showActivity(
+                FeedSample::class.java
             )
         }
         findViewById<View>(R.id.favorites).setOnClickListener {

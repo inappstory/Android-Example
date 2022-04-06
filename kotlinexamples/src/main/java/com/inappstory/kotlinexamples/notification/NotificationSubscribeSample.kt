@@ -64,19 +64,25 @@ class NotificationSubscribeSample : AppCompatActivity() {
         try {
             if (adapterCallback) {
                 storiesList.setCallback(object : ListCallbackAdapter() {
-                    override fun storiesLoaded(size: Int) {}
+                    override fun storiesLoaded(size: Int, feed: String) {}
                 })
             } else {
                 storiesList.setCallback(object : ListCallback {
-                    override fun storiesLoaded(size: Int) {}
-                    override fun loadError() {}
+                    override fun storiesLoaded(
+                        size: Int,
+                        feed: String
+                    ) {
+                    }
+
+                    override fun loadError(feed: String) {}
                     override fun itemClick(
                         id: Int,
                         listIndex: Int,
                         title: String,
                         tags: String,
                         slidesCount: Int,
-                        isFavoriteList: Boolean
+                        isFavoriteList: Boolean,
+                        feed: String
                     ) {
                     }
                 })

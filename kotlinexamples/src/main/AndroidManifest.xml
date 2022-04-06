@@ -28,6 +28,9 @@
         <activity android:name="com.inappstory.kotlinexamples.custom.CustomCellSample"
             android:exported="true"/>
 
+        <activity android:name="com.inappstory.kotlinexamples.feeds.FeedSample"
+            android:exported="true"/>
+
         <activity android:name="com.inappstory.kotlinexamples.favorites.FavoritesSample"
             android:exported="true"/>
         <activity android:name="com.inappstory.kotlinexamples.favorites.StoryFavoritesActivity"

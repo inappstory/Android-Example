@@ -20,7 +20,6 @@ class BasicIntegrationSample : AppCompatActivity() {
         try {
             storiesList.loadStories()
         } catch (e: DataException) {
-            e.printStackTrace()
         }
     }
 }
