@@ -20,7 +20,6 @@ class DemoApplication : Application() {
         try {
             InAppStoryManager.Builder()
                 .userId(getUserId())
-                .sandbox(true)
                 //.testKey(getTestKey())
                 .context(applicationContext)
                 .create()
