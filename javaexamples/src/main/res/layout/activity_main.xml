@@ -64,6 +64,11 @@
                 android:layout_height="wrap_content"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
+                android:text="Feeds"
+                android:id="@+id/feeds"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
                 android:text="Change user"
                 android:id="@+id/change_user"
                 android:layout_height="wrap_content"/>

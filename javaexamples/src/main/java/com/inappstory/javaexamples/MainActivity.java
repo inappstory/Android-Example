@@ -11,6 +11,7 @@ import com.inappstory.javaexamples.advanced.AdvancedCellSample;
 import com.inappstory.javaexamples.custom.CustomCellSample;
 import com.inappstory.javaexamples.customreader.ReaderCustomizationSample;
 import com.inappstory.javaexamples.favorites.FavoritesSample;
+import com.inappstory.javaexamples.feeds.FeedSample;
 import com.inappstory.javaexamples.goodswidget.CustomCellWidgetSample;
 import com.inappstory.javaexamples.goodswidget.CustomWidgetSample;
 import com.inappstory.javaexamples.goodswidget.DefaultWidgetSample;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.custom_reader).setOnClickListener(v -> showActivity(ReaderCustomizationSample.class));
         findViewById(R.id.onboarding).setOnClickListener(v -> showActivity(OnboardingSample.class));
         findViewById(R.id.single).setOnClickListener(v -> showActivity(SingleStorySample.class));
+        findViewById(R.id.feeds).setOnClickListener(v -> showActivity(FeedSample.class));
         findViewById(R.id.change_user).setOnClickListener(v -> showActivity(UserChangeSample.class));
         findViewById(R.id.tags).setOnClickListener(v -> showActivity(TagsPlaceholdersSample.class));
         findViewById(R.id.notification).setOnClickListener(v -> showActivity(NotificationSubscribeSample.class));

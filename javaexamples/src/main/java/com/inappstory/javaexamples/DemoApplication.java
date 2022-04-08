@@ -14,7 +14,6 @@ public class DemoApplication extends Application {
         try {
             new InAppStoryManager.Builder()
                     .userId(getUserId())
-                    .sandbox(false)
                    //.testKey(getTestKey())
                     .context(getApplicationContext())
                     .create();

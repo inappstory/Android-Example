@@ -1,6 +1,7 @@
 package com.inappstory.kotlinexamples
 
 import android.app.Application
+import android.util.Log
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
@@ -26,6 +27,16 @@ class DemoApplication : Application() {
         } catch (e: DataException) {
             e.printStackTrace()
             return
+        }
+
+        InAppStoryManager.logger = object : InAppStoryManager.IASLogger {
+            override fun showELog(p0: String?, p1: String?) {
+                Log.d(p0, p1.orEmpty())
+            }
+
+            override fun showDLog(p0: String?, p1: String?) {
+                Log.d(p0, p1.orEmpty())
+            }
         }
     }
 

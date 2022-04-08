@@ -61,19 +61,19 @@ public class NotificationSubscribeSample extends AppCompatActivity {
             if (adapterCallback) {
                 storiesList.setCallback(new ListCallbackAdapter() {
                     @Override
-                    public void storiesLoaded(int size) {
+                    public void storiesLoaded(int size, String feed) {
 
                     }
                 });
             } else {
                 storiesList.setCallback(new ListCallback() {
                     @Override
-                    public void storiesLoaded(int size) {
+                    public void storiesLoaded(int size, String feed) {
 
                     }
 
                     @Override
-                    public void loadError() {
+                    public void loadError(String feed) {
 
                     }
 
@@ -83,7 +83,8 @@ public class NotificationSubscribeSample extends AppCompatActivity {
                                           String title,
                                           String tags,
                                           int slidesCount,
-                                          boolean isFavoriteList) {
+                                          boolean isFavoriteList,
+                                          String feed) {
 
                     }
                 });
