@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-        inappstory_version = "26fcd819d346a6598567fd680f8c5d9d6bd9c72c"
+        inappstory_version = "1.8.0"
     }
     repositories {
         google()
