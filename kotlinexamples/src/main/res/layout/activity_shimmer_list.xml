@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.inappstory.sdk.stories.ui.list.StoriesList
+            android:id="@+id/stories_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp" />
+
+        <FrameLayout
+            android:id="@+id/shimmerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="18dp"
+            android:visibility="gone">
+
+            <com.inappstory.kotlinexamples.utils.ListShimmerView
+                android:id="@+id/shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="120dp" />
+        </FrameLayout>
+    </RelativeLayout>
+</LinearLayout>
