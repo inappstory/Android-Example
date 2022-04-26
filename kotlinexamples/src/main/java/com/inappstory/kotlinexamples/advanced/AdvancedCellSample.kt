@@ -10,6 +10,7 @@ import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.exceptions.DataException
 import com.inappstory.sdk.stories.api.models.Image
 import com.inappstory.sdk.stories.ui.list.StoriesList
+import com.inappstory.sdk.stories.ui.reader.StoriesGradientObject
 import com.inappstory.sdk.stories.utils.Sizes
 
 class AdvancedCellSample : AppCompatActivity() {
@@ -20,10 +21,22 @@ class AdvancedCellSample : AppCompatActivity() {
     }
 
     private fun generateAppearanceManager(isHQ: Boolean): AppearanceManager {
+        val gradient = StoriesGradientObject()
+            .csColors(
+                mutableListOf(
+                    Color.parseColor("#90000000"),
+                    Color.parseColor("#00000000"),
+                    Color.parseColor("#00000000")
+                )
+            )
+            .csLocations(mutableListOf(0f, 0.2f, 1f))
+            .csGradientHeight(-1)
         return AppearanceManager()
-            .csListItemWidth(Sizes.dpToPxExt(110))
-            .csListItemHeight(Sizes.dpToPxExt(140))
+            .csListItemWidth(Sizes.dpToPxExt(100))
+            .csListItemHeight(Sizes.dpToPxExt(100))
             .csListItemTitleColor(Color.RED)
+            .csTimerGradientEnable(true)
+            .csTimerGradient(gradient)
             .csListItemRadius(Sizes.dpToPxExt(4))
             .csListItemTitleSize(Sizes.dpToPxExt(12))
             .csListItemMargin(Sizes.dpToPxExt(4))
