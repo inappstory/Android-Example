@@ -3,9 +3,9 @@ package com.inappstory.kotlinexamples.simple
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.inappstory.kotlinexamples.R
-import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.exceptions.DataException
+import com.inappstory.sdk.stories.ui.list.StoriesList
 
 class BasicIntegrationSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,10 +16,12 @@ class BasicIntegrationSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.setAppearanceManager(AppearanceManager())
+        storiesList.appearanceManager = AppearanceManager()
+
         try {
             storiesList.loadStories()
         } catch (e: DataException) {
         }
     }
+
 }

@@ -28,7 +28,8 @@ class FavoritesSample : AppCompatActivity() {
     }
 
     private fun generateSimpleAppearanceManager(): AppearanceManager {
-        return AppearanceManager().csHasFavorite(true)
+        return AppearanceManager()
+            .csHasFavorite(true)
     }
 
     private fun generateCustomAppearanceManager(): AppearanceManager {
