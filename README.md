@@ -1,4 +1,3 @@
-rtest
 
 # InAppStorySDK Samples
 Java and Kotlin samples with basics integration for InAppStorySDK.
