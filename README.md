@@ -1,3 +1,5 @@
+test remote
+
 # InAppStorySDK Samples
 Java and Kotlin sampleswith basics integration for InAppStorySDK.
 Full documentation can be found in the [InAppStorySDK repository](https://github.com/inappstory/android-sdk)
