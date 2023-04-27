@@ -79,6 +79,10 @@ class NotificationSubscribeSample : AppCompatActivity() {
                     override fun storiesLoaded(size: Int, feed: String) {
                         hideShimmer(shimmerLayout)
                     }
+                    
+                    override fun loadError(feed: String) {
+                        hideShimmer(shimmerLayout)
+                    }
                 })
             } else {
                 storiesList.setCallback(object : ListCallback {
@@ -114,7 +118,7 @@ class NotificationSubscribeSample : AppCompatActivity() {
     fun hideShimmer(layout: FrameLayout) {
         GlobalScope.launch {
             delay(500)
-            GlobalScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
                 layout.visibility = View.GONE
             }
         }
