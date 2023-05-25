@@ -12,7 +12,6 @@ import com.inappstory.javaexamples.R;
 import com.inappstory.javaexamples.favorites.StoryFavoritesActivity;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.InAppStoryManager;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 
 import java.util.UUID;
@@ -26,27 +25,17 @@ public class UserChangeSample extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-
         String newUser = UUID.randomUUID().toString().substring(0, 8);
         ((AppCompatEditText)findViewById(R.id.userId)).setText(newUser);
         findViewById(R.id.change_user).setOnClickListener(v -> {
-            try {
-                InAppStoryManager.getInstance().setUserId(((AppCompatEditText)findViewById(R.id.userId)).getText().toString());
-                //showStories();
-            } catch (DataException e) {
-                e.printStackTrace();
-            }
+            InAppStoryManager.getInstance().setUserId(((AppCompatEditText)findViewById(R.id.userId)).getText().toString());
         });
         showStories();
     }
 
     @Override
     protected void onDestroy() {
-        try {
-            InAppStoryManager.getInstance().setUserId(DemoApplication.getUserId());
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+        InAppStoryManager.getInstance().setUserId(DemoApplication.getUserId());
         super.onDestroy();
     }
 
@@ -58,12 +47,7 @@ public class UserChangeSample extends AppCompatActivity {
             Intent intent = new Intent(UserChangeSample.this, StoryFavoritesActivity.class);
             startActivity(intent);
         });
-
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+        storiesList.loadStories();
     }
 
 }

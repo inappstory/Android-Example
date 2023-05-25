@@ -14,7 +14,6 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
-import com.inappstory.sdk.exceptions.DataException
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.goodswidget.*
 import com.inappstory.sdk.stories.utils.Sizes
@@ -29,7 +28,7 @@ class CustomWidgetSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.setAppearanceManager(AppearanceManager())
+        storiesList.appearanceManager = AppearanceManager()
         AppearanceManager.getCommonInstance().csCustomGoodsWidget(object : ICustomGoodsWidget {
             var container: RelativeLayout? = null
 
@@ -107,11 +106,8 @@ class CustomWidgetSample : AppCompatActivity() {
 
             override fun onItemClick(goodsItemData: GoodsItemData) {}
         })
-        try {
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
-        }
+
+        storiesList.loadStories()
     }
 
     override fun onDestroy() {

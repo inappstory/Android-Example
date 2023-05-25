@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+     //   FilePreviewsList list = findViewById(R.id.file_previews);
+     //   list.load(true);
         AppCompatCheckBox isHQcb = findViewById(R.id.isHQ);
         findViewById(R.id.simple).setOnClickListener(v -> showActivity(BasicIntegrationSample.class));
         findViewById(R.id.advanced).setOnClickListener(v -> showActivity(AdvancedCellSample.class, isHQcb.isChecked()));

@@ -8,6 +8,10 @@
         android:layout_width="match_parent"
         android:id="@+id/stories_list"
         android:layout_height="wrap_content"/>
+    <WebView
+        android:layout_width="match_parent"
+        android:id="@+id/webView"
+        android:layout_height="match_parent"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:hint="Story Id"

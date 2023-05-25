@@ -1,9 +1,9 @@
 package com.inappstory.javaexamples;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.inappstory.sdk.InAppStoryManager;
-import com.inappstory.sdk.exceptions.DataException;
 
 
 public class DemoApplication extends Application {
@@ -11,22 +11,30 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        try {
-            new InAppStoryManager.Builder()
-                    .userId(getUserId())
-                   //.testKey(getTestKey())
-                    .context(getApplicationContext())
-                    .create();
-        } catch (DataException e) {
-            e.printStackTrace();
-            return;
-        }
+        new InAppStoryManager.Builder()
+                .userId(getUserId())
+                .sandbox(true)
+                //.testKey(getTestKey())
+                .context(getApplicationContext())
+                .create();
+        InAppStoryManager.logger = new InAppStoryManager.IASLogger() {
+            @Override
+            public void showELog(String s, String s1) {
+                Log.d(s, s1);
+            }
+
+            @Override
+            public void showDLog(String s, String s1) {
+                Log.d(s, s1);
+            }
+        };
 
     }
 
     public static String getUserId() {
         /*TODO*/
-        throw new UnsupportedOperationException("Not implemented yet");
+        return "";
+        //throw new UnsupportedOperationException("Not implemented yet");
     }
 
 

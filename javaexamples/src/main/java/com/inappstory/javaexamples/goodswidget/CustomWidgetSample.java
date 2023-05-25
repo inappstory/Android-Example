@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.ui.views.goodswidget.GetGoodsDataCallback;
 import com.inappstory.sdk.stories.ui.views.goodswidget.GoodsItemData;
@@ -110,11 +109,8 @@ public class CustomWidgetSample extends AppCompatActivity {
 
             }
         });
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+
+        storiesList.loadStories();
 
     }
 

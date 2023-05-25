@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.InAppStoryManager;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.outercallbacks.common.onboarding.OnboardingLoadCallback;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 
@@ -35,11 +34,7 @@ public class OnboardingSample extends AppCompatActivity {
     private void showStories() {
         StoriesList storiesList = findViewById(R.id.stories_list);
         storiesList.setAppearanceManager(appearanceManager);
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+        storiesList.loadStories();
     }
 
 

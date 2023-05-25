@@ -97,6 +97,12 @@
                 android:text="Custom goods widget"
                 android:id="@+id/custom_goods_widget"
                 android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:text="Custom share"
+                android:id="@+id/custom_share"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </ScrollView>
 

@@ -7,7 +7,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
-import com.inappstory.sdk.exceptions.DataException
 import com.inappstory.sdk.stories.api.models.Image
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.reader.StoriesGradientObject
@@ -32,8 +31,8 @@ class AdvancedCellSample : AppCompatActivity() {
             .csLocations(mutableListOf(0f, 0.2f, 1f))
             .csGradientHeight(-1)
         return AppearanceManager()
-            .csListItemWidth(Sizes.dpToPxExt(100))
             .csListItemHeight(Sizes.dpToPxExt(100))
+            .csListItemRatio(1.2f)
             .csListItemTitleColor(Color.RED)
             .csTimerGradientEnable(true)
             .csTimerGradient(gradient)
@@ -46,6 +45,7 @@ class AdvancedCellSample : AppCompatActivity() {
     }
 
     private fun createTypeface(): Typeface {
+
         var typeface = Typeface.createFromAsset(
             assets, "synerga_pro_reg.otf"
         )
@@ -57,15 +57,9 @@ class AdvancedCellSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList: StoriesList = findViewById(R.id.stories_list)
-        storiesList.setAppearanceManager(
-            generateAppearanceManager(
-                intent.getBooleanExtra("isHQ", false)
-            )
+        storiesList.appearanceManager = generateAppearanceManager(
+            intent.getBooleanExtra("isHQ", false)
         )
-        try {
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
-        }
+        storiesList.loadStories()
     }
 }

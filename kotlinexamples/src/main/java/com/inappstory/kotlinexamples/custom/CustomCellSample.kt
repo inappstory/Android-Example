@@ -9,7 +9,6 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.inappstory.kotlinexamples.ImageLoader
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
-import com.inappstory.sdk.exceptions.DataException
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem
 import java.io.File
@@ -59,12 +58,8 @@ class CustomCellSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.setAppearanceManager(generateAppearanceManager())
-        try {
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
-        }
+        storiesList.appearanceManager = generateAppearanceManager()
+        storiesList.loadStories()
     }
 
     fun showImage(url: String?, backgroundColor: Int, imageView: ImageView) {

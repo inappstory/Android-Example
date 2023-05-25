@@ -9,20 +9,11 @@ import com.inappstory.kotlinexamples.utils.ListShimmerView
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
-import com.inappstory.sdk.stories.outercallbacks.common.reader.ShowStoryCallback
-import com.inappstory.sdk.stories.outercallbacks.common.reader.SourceType
-import com.inappstory.sdk.stories.outercallbacks.common.reader.CloseStoryCallback
-import com.inappstory.sdk.stories.outercallbacks.common.reader.CloseReader
 import com.inappstory.sdk.stories.outercallbacks.storieslist.ListCallbackAdapter
 import com.inappstory.sdk.stories.outercallbacks.storieslist.ListCallback
-import com.inappstory.sdk.exceptions.DataException
-import com.inappstory.sdk.stories.outercallbacks.common.onboarding.OnboardingLoadCallback
-import com.inappstory.sdk.stories.callbacks.OnFavoriteItemClick
+import com.inappstory.sdk.stories.outercallbacks.common.reader.*
 import com.inappstory.sdk.stories.utils.Sizes
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class NotificationSubscribeSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +31,8 @@ class NotificationSubscribeSample : AppCompatActivity() {
         title: String,
         tags: String,
         slidesCount: Int,
-        source: SourceType
+        source: SourceType,
+        showStoryAction: ShowStoryAction
     ) {
 
     }
@@ -63,58 +55,67 @@ class NotificationSubscribeSample : AppCompatActivity() {
         val shimmerLayout = findViewById<FrameLayout>(R.id.shimmerLayout)
         shimmer.imageWidth = Sizes.dpToPxExt(120).toFloat()
         shimmerLayout.visibility = View.VISIBLE
-        storiesList.setAppearanceManager(AppearanceManager())
+        storiesList.appearanceManager = AppearanceManager()
         InAppStoryManager.getInstance()
-            .setShowStoryCallback { id, title, tags, slidesCount, source ->
-                doSmthOnShowStory(id, title, tags, slidesCount, source)
+            .setShowStoryCallback { id, title, tags, slidesCount, source, showStoryAction ->
+                doSmthOnShowStory(id, title, tags, slidesCount, source, showStoryAction)
             }
         InAppStoryManager.getInstance()
             .setCloseStoryCallback { id, title, tags, slidesCount, index, action, source ->
                 doSmthOnCloseStory(id, title, tags, slidesCount, index, action, source)
             }
         val adapterCallback = false
-        try {
-            if (adapterCallback) {
-                storiesList.setCallback(object : ListCallbackAdapter() {
-                    override fun storiesLoaded(size: Int, feed: String) {
-                        hideShimmer(shimmerLayout)
-                    }
-                })
-            } else {
-                storiesList.setCallback(object : ListCallback {
-                    override fun storiesLoaded(
-                        size: Int,
-                        feed: String
-                    ) {
+        if (adapterCallback) {
+            storiesList.setCallback(object : ListCallbackAdapter() {
+                override fun storiesLoaded(size: Int, feed: String) {
+                    hideShimmer(shimmerLayout)
+                }
 
-                        hideShimmer(shimmerLayout)
-                    }
+                override fun loadError(feed: String) {
+                    hideShimmer(shimmerLayout)
+                }
 
-                    override fun loadError(feed: String) {
-                        hideShimmer(shimmerLayout)
-                    }
-                    override fun itemClick(
-                        id: Int,
-                        listIndex: Int,
-                        title: String,
-                        tags: String,
-                        slidesCount: Int,
-                        isFavoriteList: Boolean,
-                        feed: String
-                    ) {
-                    }
-                })
-            }
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
+            })
+        } else {
+            storiesList.setCallback(object : ListCallback {
+                override fun storiesLoaded(
+                    size: Int,
+                    feed: String
+                ) {
+
+                    hideShimmer(shimmerLayout)
+                }
+
+                override fun storiesUpdated(
+                    size: Int,
+                    feed: String
+                ) {
+
+                }
+
+                override fun loadError(feed: String) {
+                    hideShimmer(shimmerLayout)
+                }
+
+                override fun itemClick(
+                    id: Int,
+                    listIndex: Int,
+                    title: String,
+                    tags: String,
+                    slidesCount: Int,
+                    isFavoriteList: Boolean,
+                    feed: String
+                ) {
+                }
+            })
         }
+        storiesList.loadStories()
     }
 
     fun hideShimmer(layout: FrameLayout) {
         GlobalScope.launch {
             delay(500)
-            GlobalScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
                 layout.visibility = View.GONE
             }
         }

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 
 public class BasicIntegrationSample extends AppCompatActivity {
@@ -18,7 +17,18 @@ public class BasicIntegrationSample extends AppCompatActivity {
         setContentView(R.layout.activity_base_list);
         showStories();
     }
-    
+
+    boolean startStop = false;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 
     StoriesList storiesList;
 
@@ -27,12 +37,7 @@ public class BasicIntegrationSample extends AppCompatActivity {
         storiesList = findViewById(R.id.stories_list);
         storiesList.setAppearanceManager(new AppearanceManager());
 
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
-
+        storiesList.loadStories();
     }
 
 

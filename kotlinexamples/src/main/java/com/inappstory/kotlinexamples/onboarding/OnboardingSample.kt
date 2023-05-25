@@ -7,7 +7,6 @@ import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
-import com.inappstory.sdk.exceptions.DataException
 
 class OnboardingSample : AppCompatActivity() {
     var appearanceManager = AppearanceManager()
@@ -25,11 +24,7 @@ class OnboardingSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.setAppearanceManager(appearanceManager)
-        try {
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
-        }
+        storiesList.appearanceManager = appearanceManager
+        storiesList.loadStories()
     }
 }

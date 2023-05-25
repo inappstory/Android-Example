@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-        inappstory_version = "b53ae099fc52bdc48680e4e2e2c50c76f7230349"
+        inappstory_version = "9966d763db66eef623710e079c504fb33bdf913d"
     }
     repositories {
         google()
@@ -11,7 +11,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.1'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20'
     }
 }
 

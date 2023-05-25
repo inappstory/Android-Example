@@ -9,7 +9,6 @@ import androidx.appcompat.widget.AppCompatEditText;
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.InAppStoryManager;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 
 public class FeedSample extends AppCompatActivity {
@@ -31,20 +30,10 @@ public class FeedSample extends AppCompatActivity {
         findViewById(R.id.show_onboarding).setOnClickListener(v -> {
             String feed = ((AppCompatEditText)findViewById(R.id.feed)).getText().toString();
             storiesList.setFeed(feed);
-            try {
-                storiesList.loadStories();
-            } catch (DataException e) {
-                e.printStackTrace();
-            }
-        });
 
-        try {
             storiesList.loadStories();
-        } catch (DataException e){
-            e.printStackTrace();
-        }
-
-
+        });
+        storiesList.loadStories();
     }
 
 

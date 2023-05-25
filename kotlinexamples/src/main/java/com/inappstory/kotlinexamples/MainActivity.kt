@@ -15,6 +15,7 @@ import com.inappstory.kotlinexamples.goodswidget.CustomWidgetSample
 import com.inappstory.kotlinexamples.goodswidget.DefaultWidgetSample
 import com.inappstory.kotlinexamples.notification.NotificationSubscribeSample
 import com.inappstory.kotlinexamples.onboarding.OnboardingSample
+import com.inappstory.kotlinexamples.share.CustomShareSample
 import com.inappstory.kotlinexamples.simple.BasicIntegrationSample
 import com.inappstory.kotlinexamples.single.SingleStorySample
 import com.inappstory.kotlinexamples.tagsplaceholders.TagsPlaceholdersSample
@@ -93,6 +94,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.custom_goods_widget).setOnClickListener {
             showActivity(
                 CustomWidgetSample::class.java
+            )
+        }
+        findViewById<View>(R.id.custom_share).setOnClickListener {
+            showActivity(
+                CustomShareSample::class.java
             )
         }
     }

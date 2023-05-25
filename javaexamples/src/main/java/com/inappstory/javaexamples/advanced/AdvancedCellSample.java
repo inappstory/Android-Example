@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
-import com.inappstory.sdk.exceptions.DataException;
+import com.inappstory.sdk.stories.api.models.Image;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.utils.Sizes;
 
@@ -26,14 +26,15 @@ public class AdvancedCellSample extends AppCompatActivity {
     private AppearanceManager generateAppearanceManager(boolean isHQ) {
         AppearanceManager appearanceManager =
                 new AppearanceManager()
-                        .csListItemWidth(Sizes.dpToPxExt(110))
-                        .csListItemHeight(Sizes.dpToPxExt(140))
+                        .csListItemHeight(Sizes.dpToPxExt(100))
+                        .csListItemRatio(1.2f)
                         .csListItemTitleColor(Color.RED)
+                        .csTimerGradientEnable(true)
                         .csListItemRadius(Sizes.dpToPxExt(4))
                         .csListItemTitleSize(Sizes.dpToPxExt(12))
                         .csListItemMargin(Sizes.dpToPxExt(4))
                         .csCustomFont(createTypeface()) //If you want to share this font to dialogs in stories, set this appearanceManager as global
-                    //    .csCoverQuality(isHQ ? Image.QUALITY_HIGH : Image.QUALITY_MEDIUM)
+                        .csCoverQuality(isHQ ? Image.QUALITY_HIGH : Image.QUALITY_MEDIUM)
                         .csListItemBorderColor(Color.GREEN);
         return appearanceManager;
     }
@@ -50,11 +51,7 @@ public class AdvancedCellSample extends AppCompatActivity {
         StoriesList storiesList = findViewById(R.id.stories_list);
         storiesList.setAppearanceManager(generateAppearanceManager(
                 getIntent().getBooleanExtra("isHQ", false)));
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+        storiesList.loadStories();
     }
 
 

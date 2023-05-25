@@ -13,7 +13,6 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.inappstory.kotlinexamples.ImageLoader
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
-import com.inappstory.sdk.exceptions.DataException
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.IGetFavoriteListItem
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem
@@ -137,16 +136,12 @@ class FavoritesSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList: StoriesList = findViewById(R.id.stories_list)
-        storiesList.setAppearanceManager(generateSimpleAppearanceManager())
+        storiesList.appearanceManager = generateSimpleAppearanceManager()
         storiesList.setOnFavoriteItemClick {
             val intent = Intent(this@FavoritesSample, StoryFavoritesActivity::class.java)
             startActivity(intent)
         }
-        try {
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
-        }
+        storiesList.loadStories()
     }
 
     fun showImage(url: String?, backgroundColor: Int, imageView: ImageView) {

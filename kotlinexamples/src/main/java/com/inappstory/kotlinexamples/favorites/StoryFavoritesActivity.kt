@@ -12,7 +12,6 @@ import com.inappstory.kotlinexamples.ImageLoader
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
-import com.inappstory.sdk.exceptions.DataException
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem
 import java.io.File
@@ -78,11 +77,8 @@ class StoryFavoritesActivity : AppCompatActivity() {
             this@StoryFavoritesActivity, 2,
             RecyclerView.VERTICAL, false
         )
-        try {
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
-        }
+
+        storiesList.loadStories()
     }
 
     fun showImage(url: String?, backgroundColor: Int, imageView: ImageView) {

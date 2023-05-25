@@ -58,6 +58,10 @@
             android:exported="true"/>
         <activity android:name="com.inappstory.kotlinexamples.goodswidget.CustomWidgetSample"
             android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.share.CustomShareSample"
+            android:exported="true"/>
+
+        <receiver android:name=".share.ShareBroadcastReceiver"/>
     </application>
 
 </manifest>

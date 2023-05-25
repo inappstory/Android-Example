@@ -12,7 +12,6 @@ import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
 import com.inappstory.sdk.InAppStoryService
-import com.inappstory.sdk.exceptions.DataException
 import com.inappstory.sdk.imageloader.ImageLoader
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.goodswidget.*
@@ -27,7 +26,7 @@ class CustomCellWidgetSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.setAppearanceManager(AppearanceManager())
+        storiesList.appearanceManager = AppearanceManager()
         AppearanceManager.getCommonInstance().csCustomGoodsWidget(object : ICustomGoodsWidget {
 
             override fun getWidgetView(): View? {
@@ -91,11 +90,7 @@ class CustomCellWidgetSample : AppCompatActivity() {
                 ).show()
             }
         })
-        try {
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
-        }
+        storiesList.loadStories()
     }
 
     override fun onDestroy() {

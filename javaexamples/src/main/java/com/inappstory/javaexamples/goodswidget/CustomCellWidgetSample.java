@@ -16,7 +16,6 @@ import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.InAppStoryManager;
 import com.inappstory.sdk.InAppStoryService;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.imageloader.ImageLoader;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.ui.views.goodswidget.GetGoodsDataCallback;
@@ -94,11 +93,8 @@ public class CustomCellWidgetSample extends AppCompatActivity {
                         goodsItemData.toString(), Toast.LENGTH_LONG).show();
             }
         });
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+
+        storiesList.loadStories();
 
     }
 

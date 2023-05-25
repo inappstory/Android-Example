@@ -17,7 +17,6 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.inappstory.javaexamples.ImageLoader;
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.ui.views.IGetFavoriteListItem;
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem;
@@ -166,11 +165,8 @@ public class FavoritesSample extends AppCompatActivity {
             Intent intent = new Intent(FavoritesSample.this, StoryFavoritesActivity.class);
             startActivity(intent);
         });
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+
+        storiesList.loadStories();
     }
 
     private void showImage(String path, int backgroundColor, ImageView imageView) {

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 
 public class ReaderCustomizationSample extends AppCompatActivity {
@@ -31,11 +30,7 @@ public class ReaderCustomizationSample extends AppCompatActivity {
     private void showStories() {
         StoriesList storiesList = findViewById(R.id.stories_list);
         storiesList.setAppearanceManager(generateAppearanceManager());
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+        storiesList.loadStories();
     }
 
 

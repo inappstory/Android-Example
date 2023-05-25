@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
-import com.inappstory.sdk.exceptions.DataException
 import com.inappstory.sdk.stories.api.models.ImagePlaceholderValue
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import java.util.ArrayList
@@ -67,11 +66,7 @@ class TagsPlaceholdersSample : AppCompatActivity() {
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
         storiesList.appearanceManager = AppearanceManager()
-        try {
-            storiesList.loadStories()
-        } catch (e: DataException) {
-            e.printStackTrace()
-        }
+        storiesList.loadStories()
     }
 
     private val tagsAndPlaceholders: Unit

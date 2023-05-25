@@ -16,7 +16,6 @@ import com.inappstory.javaexamples.ImageLoader;
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.InAppStoryManager;
-import com.inappstory.sdk.exceptions.DataException;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem;
 
@@ -99,11 +98,8 @@ public class StoryFavoritesActivity extends AppCompatActivity {
         storiesList.setAppearanceManager(generateAppearanceManager());
         storiesList.setLayoutManager(new GridLayoutManager(StoryFavoritesActivity.this, 2,
                 RecyclerView.VERTICAL, false));
-        try {
-            storiesList.loadStories();
-        } catch (DataException e) {
-            e.printStackTrace();
-        }
+
+        storiesList.loadStories();
     }
 
     private void showImage(String path, int backgroundColor, ImageView imageView) {
