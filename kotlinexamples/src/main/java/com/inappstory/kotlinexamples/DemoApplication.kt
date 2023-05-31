@@ -40,6 +40,6 @@ class DemoApplication : Application() {
     }
 
     fun getApiKey(): String? {
-        return "test-key"
+        return ""
     }
 }
