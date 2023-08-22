@@ -6,7 +6,7 @@ Full documentation can be found in the [InAppStorySDK repository](https://github
 ### Get started
 
 - clone repository to your computer;   
-- in `constants.xml` file set you integration key from [console](https://console.inappstory.com/) in `csApiKey` string
+- in `DemoApplication` class file pass you integration key from [console](https://console.inappstory.com/) in `getApiKey` method
 
 ### Samples description
 
