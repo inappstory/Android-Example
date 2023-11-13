@@ -1,5 +1,6 @@
 package com.inappstory.kotlinexamples.goodswidget
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -22,48 +23,57 @@ class DefaultWidgetSample : AppCompatActivity() {
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
         storiesList.appearanceManager = AppearanceManager()
-        AppearanceManager.getCommonInstance().csCustomGoodsWidget(object : ICustomGoodsWidget {
-            override fun getWidgetView(): View? {
-                return null;
-            }
-
-            override fun getItem(): ICustomGoodsItem? {
-                return null;
-            }
-
-            override fun getWidgetAppearance(): IGoodsWidgetAppearance? {
-                return null;
-            }
-
-            override fun getDecoration(): RecyclerView.ItemDecoration? {
-                return null;
-            }
-
-            public override fun getSkus(skus: ArrayList<String>, callback: GetGoodsDataCallback) {
-                val goodsItemData: ArrayList<GoodsItemData> = ArrayList<GoodsItemData>()
-                for (sku: String in skus) {
-                    val data = GoodsItemData(
-                        sku,
-                        "title_$sku",
-                        "desc_$sku",
-                        "https://media.istockphoto.com/photos/big-and-small-picture-id172759822",
-                        "10",
-                        "20",
-                        sku
-                    )
-                    goodsItemData.add(data)
+        AppearanceManager.getCommonInstance().csCustomGoodsWidget(
+            object : ICustomGoodsWidget {
+                override fun getWidgetView(context: Context?): View? {
+                    return null;
                 }
-                callback.onSuccess(goodsItemData)
-            }
 
-            override fun onItemClick(goodsItemData: GoodsItemData) {
-                InAppStoryManager.closeStoryReader()
-                Toast.makeText(
-                    this@DefaultWidgetSample,
-                    goodsItemData.toString(), Toast.LENGTH_LONG
-                ).show()
-            }
-        })
+                override fun getItem(): ICustomGoodsItem? {
+                    return null;
+                }
+
+                override fun getWidgetAppearance(): IGoodsWidgetAppearance? {
+                    return null;
+                }
+
+                override fun getDecoration(): RecyclerView.ItemDecoration? {
+                    return null;
+                }
+
+                override fun getSkus(
+                    skus: ArrayList<String>,
+                    callback: GetGoodsDataCallback
+                ) {
+                    val goodsItemData: ArrayList<GoodsItemData> = ArrayList<GoodsItemData>()
+                    for (sku: String in skus) {
+                        val data = GoodsItemData(
+                            sku,
+                            "title_$sku",
+                            "desc_$sku",
+                            "https://media.istockphoto.com/photos/big-and-small-picture-id172759822",
+                            "10",
+                            "20",
+                            sku
+                        )
+                        goodsItemData.add(data)
+                    }
+                    callback.onSuccess(goodsItemData)
+                }
+
+                override fun onItemClick(
+                    view: View?,
+                    goodsItemData: GoodsItemData?,
+                    callback: GetGoodsDataCallback?
+                ) {
+                    InAppStoryManager.closeStoryReader()
+
+                    Toast.makeText(
+                        view?.context ?: this@DefaultWidgetSample,
+                        goodsItemData.toString(), Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
 
         storiesList.loadStories()
     }

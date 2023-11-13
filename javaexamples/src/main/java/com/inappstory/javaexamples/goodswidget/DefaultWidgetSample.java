@@ -1,5 +1,6 @@
 package com.inappstory.javaexamples.goodswidget;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -36,7 +37,7 @@ public class DefaultWidgetSample extends AppCompatActivity {
 
         AppearanceManager.getCommonInstance().csCustomGoodsWidget(new ICustomGoodsWidget() {
             @Override
-            public View getWidgetView() {
+            public View getWidgetView(Context context) {
                 return null;
             }
 
@@ -67,9 +68,9 @@ public class DefaultWidgetSample extends AppCompatActivity {
             }
 
             @Override
-            public void onItemClick(GoodsItemData goodsItemData) {
+            public void onItemClick(View view, GoodsItemData goodsItemData, GetGoodsDataCallback getGoodsDataCallback) {
                 InAppStoryManager.closeStoryReader();
-                Toast.makeText(DefaultWidgetSample.this,
+                Toast.makeText(view.getContext(),
                         goodsItemData.toString(), Toast.LENGTH_LONG).show();
             }
         });

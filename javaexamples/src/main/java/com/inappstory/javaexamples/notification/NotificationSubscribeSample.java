@@ -8,9 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.InAppStoryManager;
+import com.inappstory.sdk.stories.outercallbacks.common.reader.StoryData;
 import com.inappstory.sdk.stories.outercallbacks.storieslist.ListCallback;
 import com.inappstory.sdk.stories.outercallbacks.storieslist.ListCallbackAdapter;
+import com.inappstory.sdk.stories.outercallbacks.storieslist.ListScrollCallback;
+import com.inappstory.sdk.stories.outercallbacks.storieslist.ListScrollCallbackAdapter;
+import com.inappstory.sdk.stories.ui.list.ShownStoriesListItem;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
+
+import java.util.List;
 
 public class NotificationSubscribeSample extends AppCompatActivity {
 
@@ -29,10 +35,10 @@ public class NotificationSubscribeSample extends AppCompatActivity {
     private void showStories() {
         StoriesList storiesList = findViewById(R.id.stories_list);
         storiesList.setAppearanceManager(new AppearanceManager());
-        InAppStoryManager.getInstance().setShowStoryCallback((id, title, tags, slidesCount, source, action) -> {
+        InAppStoryManager.getInstance().setShowStoryCallback((storyData, showStoryAction) -> {
 
         });
-        InAppStoryManager.getInstance().setCloseStoryCallback((id, title, tags, slidesCount, index, action, source) -> {
+        InAppStoryManager.getInstance().setCloseStoryCallback((slideData, closeReader) -> {
 
         });
         boolean adapterCallback = false;
@@ -40,6 +46,12 @@ public class NotificationSubscribeSample extends AppCompatActivity {
             storiesList.setCallback(new ListCallbackAdapter() {
                 @Override
                 public void storiesLoaded(int size, String feed) {
+
+                }
+            });
+            storiesList.setScrollCallback(new ListScrollCallbackAdapter() {
+                @Override
+                public void onVisibleAreaUpdated(List<ShownStoriesListItem> list) {
 
                 }
             });
@@ -61,13 +73,23 @@ public class NotificationSubscribeSample extends AppCompatActivity {
                 }
 
                 @Override
-                public void itemClick(int id,
-                                      int listIndex,
-                                      String title,
-                                      String tags,
-                                      int slidesCount,
-                                      boolean isFavoriteList,
-                                      String feed) {
+                public void itemClick(StoryData storyData, int i) {
+
+                }
+            });
+            storiesList.setScrollCallback(new ListScrollCallback() {
+                @Override
+                public void scrollStart() {
+
+                }
+
+                @Override
+                public void onVisibleAreaUpdated(List<ShownStoriesListItem> list) {
+
+                }
+
+                @Override
+                public void scrollEnd() {
 
                 }
             });

@@ -1,5 +1,6 @@
 package com.inappstory.kotlinexamples.goodswidget
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,15 +30,15 @@ class CustomCellWidgetSample : AppCompatActivity() {
         storiesList.appearanceManager = AppearanceManager()
         AppearanceManager.getCommonInstance().csCustomGoodsWidget(object : ICustomGoodsWidget {
 
-            override fun getWidgetView(): View? {
-                return null
+
+            override fun getWidgetView(context: Context?): View {
+                TODO("Not yet implemented")
             }
 
             override fun getItem(): ICustomGoodsItem? {
                 return object : ICustomGoodsItem {
-
-                    override fun getView(): View {
-                        return LayoutInflater.from(this@CustomCellWidgetSample)
+                    override fun getView(context: Context?): View {
+                        return LayoutInflater.from(context ?: this@CustomCellWidgetSample)
                             .inflate(
                                 R.layout.custom_goods_item,
                                 null, false
@@ -82,10 +83,14 @@ class CustomCellWidgetSample : AppCompatActivity() {
                 callback.onSuccess(goodsItemData)
             }
 
-            override fun onItemClick(goodsItemData: GoodsItemData) {
+            override fun onItemClick(
+                view: View?,
+                goodsItemData: GoodsItemData?,
+                callback: GetGoodsDataCallback?
+            ) {
                 InAppStoryManager.closeStoryReader()
                 Toast.makeText(
-                    this@CustomCellWidgetSample,
+                    view?.context ?: this@CustomCellWidgetSample,
                     goodsItemData.toString(), Toast.LENGTH_LONG
                 ).show()
             }

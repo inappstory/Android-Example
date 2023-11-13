@@ -1,5 +1,6 @@
 package com.inappstory.kotlinexamples.goodswidget
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -29,83 +30,87 @@ class CustomWidgetSample : AppCompatActivity() {
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
         storiesList.appearanceManager = AppearanceManager()
-        AppearanceManager.getCommonInstance().csCustomGoodsWidget(object : ICustomGoodsWidget {
-            var container: RelativeLayout? = null
+        AppearanceManager.getCommonInstance().csCustomGoodsWidget(
+            object : ICustomGoodsWidget {
+                var container: RelativeLayout? = null
 
-            override fun getWidgetView(): View {
-                container = View.inflate(
-                    this@CustomWidgetSample,
-                    R.layout.custom_goods_widget, null
-                ) as RelativeLayout
-                return (container)!!
-            }
-
-            override fun getItem(): ICustomGoodsItem? {
-                return null
-            }
-
-            override fun getWidgetAppearance(): IGoodsWidgetAppearance? {
-                return null
-            }
-
-            override fun getDecoration(): RecyclerView.ItemDecoration? {
-                return null
-            }
-
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            override fun getSkus(
-                skus: ArrayList<String>?,
-                getGoodsDataCallback: GetGoodsDataCallback
-            ) {
-                container?.let { container ->
-                    if (skus != null) {
-                        getGoodsDataCallback.onSuccess(ArrayList())
-                        for (sku: String in skus) {
-                            val textView = AppCompatTextView(
-                                this@CustomWidgetSample
-                            )
-                            val lp = LinearLayout.LayoutParams(
-                                ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT
-                            )
-                            lp.setMargins(
-                                Sizes.dpToPxExt(16), Sizes.dpToPxExt(16),
-                                Sizes.dpToPxExt(16), 0
-                            )
-                            textView.layoutParams = lp
-                            textView.setPadding(
-                                Sizes.dpToPxExt(8), Sizes.dpToPxExt(8),
-                                Sizes.dpToPxExt(8), Sizes.dpToPxExt(8)
-                            )
-                            textView.background = AppCompatResources.getDrawable(
-                                this@CustomWidgetSample,
-                                R.drawable.widget_background_solid
-                            )
-                            textView.textSize = 18f
-                            textView.setTextColor(resources.getColor(R.color.white))
-                            textView.text = sku
-                            textView.setOnClickListener {
-                                getGoodsDataCallback.itemClick(sku)
-                                Toast.makeText(
-                                    this@CustomWidgetSample,
-                                    textView.text,
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            }
-                            (container.findViewById<View>(R.id.container) as LinearLayout).addView(
-                                textView
-                            )
-                        }
-                        container.findViewById<View>(R.id.close).setOnClickListener {
-                            getGoodsDataCallback.onClose()
-                        }
-                    }
+                override fun getWidgetView(context: Context?): View? {
+                    container = View.inflate(
+                        context ?: this@CustomWidgetSample,
+                        R.layout.custom_goods_widget, null
+                    ) as RelativeLayout
+                    return (container)!!
                 }
 
-            }
+                override fun getItem(): ICustomGoodsItem? {
+                    return null
+                }
 
-            override fun onItemClick(goodsItemData: GoodsItemData) {}
-        })
+                override fun getWidgetAppearance(): IGoodsWidgetAppearance? {
+                    return null
+                }
+
+                override fun getDecoration(): RecyclerView.ItemDecoration? {
+                    return null
+                }
+
+                override fun getSkus(
+                    skus: ArrayList<String>?,
+                    getGoodsDataCallback: GetGoodsDataCallback
+                ) {
+                    container?.let { container ->
+                        if (skus != null) {
+                            getGoodsDataCallback.onSuccess(ArrayList())
+                            for (sku: String in skus) {
+                                val textView = AppCompatTextView(
+                                    this@CustomWidgetSample
+                                )
+                                val lp = LinearLayout.LayoutParams(
+                                    ViewGroup.LayoutParams.MATCH_PARENT,
+                                    ViewGroup.LayoutParams.WRAP_CONTENT
+                                )
+                                lp.setMargins(
+                                    Sizes.dpToPxExt(16), Sizes.dpToPxExt(16),
+                                    Sizes.dpToPxExt(16), 0
+                                )
+                                textView.layoutParams = lp
+                                textView.setPadding(
+                                    Sizes.dpToPxExt(8), Sizes.dpToPxExt(8),
+                                    Sizes.dpToPxExt(8), Sizes.dpToPxExt(8)
+                                )
+                                textView.background = AppCompatResources.getDrawable(
+                                    this@CustomWidgetSample,
+                                    R.drawable.widget_background_solid
+                                )
+                                textView.textSize = 18f
+                                textView.setTextColor(resources.getColor(R.color.white))
+                                textView.text = sku
+                                textView.setOnClickListener {
+                                    getGoodsDataCallback.itemClick(sku)
+                                    Toast.makeText(
+                                        this@CustomWidgetSample,
+                                        textView.text,
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
+                                (container.findViewById<View>(R.id.container) as LinearLayout).addView(
+                                    textView
+                                )
+                            }
+                            container.findViewById<View>(R.id.close).setOnClickListener {
+                                getGoodsDataCallback.onClose()
+                            }
+                        }
+                    }
+
+                }
+
+                override fun onItemClick(
+                    view: View?,
+                    goodsItemData: GoodsItemData?,
+                    callback: GetGoodsDataCallback?
+                ) {}
+            })
 
         storiesList.loadStories()
     }

@@ -1,5 +1,6 @@
 package com.inappstory.javaexamples.goodswidget;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -44,7 +45,7 @@ public class CustomWidgetSample extends AppCompatActivity {
             RelativeLayout container;
 
             @Override
-            public View getWidgetView() {
+            public View getWidgetView(Context context) {
                 container =
                         (RelativeLayout) View.inflate(CustomWidgetSample.this,
                                 R.layout.custom_goods_widget, null);
@@ -105,7 +106,11 @@ public class CustomWidgetSample extends AppCompatActivity {
             }
 
             @Override
-            public void onItemClick(GoodsItemData goodsItemData) {
+            public void onItemClick(
+                    View view,
+                    GoodsItemData goodsItemData,
+                    GetGoodsDataCallback getGoodsDataCallback
+            ) {
 
             }
         });

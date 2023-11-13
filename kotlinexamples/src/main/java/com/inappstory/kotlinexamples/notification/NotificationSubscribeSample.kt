@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.inappstory.kotlinexamples.R
 import com.inappstory.kotlinexamples.utils.ListShimmerView
 import com.inappstory.sdk.stories.ui.list.StoriesList
@@ -12,6 +13,9 @@ import com.inappstory.sdk.InAppStoryManager
 import com.inappstory.sdk.stories.outercallbacks.storieslist.ListCallbackAdapter
 import com.inappstory.sdk.stories.outercallbacks.storieslist.ListCallback
 import com.inappstory.sdk.stories.outercallbacks.common.reader.*
+import com.inappstory.sdk.stories.outercallbacks.storieslist.ListScrollCallback
+import com.inappstory.sdk.stories.outercallbacks.storieslist.ListScrollCallbackAdapter
+import com.inappstory.sdk.stories.ui.list.ShownStoriesListItem
 import com.inappstory.sdk.stories.utils.Sizes
 import kotlinx.coroutines.*
 
@@ -26,29 +30,6 @@ class NotificationSubscribeSample : AppCompatActivity() {
         super.onDestroy()
     }
 
-    private fun doSmthOnShowStory(
-        id: Int,
-        title: String,
-        tags: String,
-        slidesCount: Int,
-        source: SourceType,
-        showStoryAction: ShowStoryAction
-    ) {
-
-    }
-
-    private fun doSmthOnCloseStory(
-        id: Int,
-        title: String,
-        tags: String,
-        slidesCount: Int,
-        index: Int,
-        action: CloseReader,
-        source: SourceType
-    ) {
-
-    }
-
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
         val shimmer = findViewById<ListShimmerView>(R.id.shimmer)
@@ -57,13 +38,9 @@ class NotificationSubscribeSample : AppCompatActivity() {
         shimmerLayout.visibility = View.VISIBLE
         storiesList.appearanceManager = AppearanceManager()
         InAppStoryManager.getInstance()
-            .setShowStoryCallback { id, title, tags, slidesCount, source, showStoryAction ->
-                doSmthOnShowStory(id, title, tags, slidesCount, source, showStoryAction)
-            }
+            .setShowStoryCallback { storyData, action -> }
         InAppStoryManager.getInstance()
-            .setCloseStoryCallback { id, title, tags, slidesCount, index, action, source ->
-                doSmthOnCloseStory(id, title, tags, slidesCount, index, action, source)
-            }
+            .setCloseStoryCallback { storyData, closeReader -> }
         val adapterCallback = false
         if (adapterCallback) {
             storiesList.setCallback(object : ListCallbackAdapter() {
@@ -75,6 +52,11 @@ class NotificationSubscribeSample : AppCompatActivity() {
                     hideShimmer(shimmerLayout)
                 }
 
+            })
+            storiesList.setScrollCallback(object : ListScrollCallbackAdapter() {
+                override fun onVisibleAreaUpdated(items: MutableList<ShownStoriesListItem>?) {
+
+                }
             })
         } else {
             storiesList.setCallback(object : ListCallback {
@@ -98,14 +80,22 @@ class NotificationSubscribeSample : AppCompatActivity() {
                 }
 
                 override fun itemClick(
-                    id: Int,
-                    listIndex: Int,
-                    title: String,
-                    tags: String,
-                    slidesCount: Int,
-                    isFavoriteList: Boolean,
-                    feed: String
+                    storyData: StoryData?,
+                    index: Int
                 ) {
+                }
+            })
+            storiesList.setScrollCallback(object : ListScrollCallback {
+                override fun scrollStart() {
+
+                }
+
+                override fun onVisibleAreaUpdated(items: MutableList<ShownStoriesListItem>?) {
+
+                }
+
+                override fun scrollEnd() {
+
                 }
             })
         }
@@ -113,7 +103,7 @@ class NotificationSubscribeSample : AppCompatActivity() {
     }
 
     fun hideShimmer(layout: FrameLayout) {
-        GlobalScope.launch {
+        lifecycleScope.launch {
             delay(500)
             withContext(Dispatchers.Main) {
                 layout.visibility = View.GONE
