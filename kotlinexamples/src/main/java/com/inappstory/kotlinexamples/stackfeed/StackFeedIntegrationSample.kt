@@ -23,7 +23,7 @@ class StackFeedIntegrationSample : AppCompatActivity() {
 
     private fun showStories() {
         val customList = findViewById<RecyclerView>(R.id.customList)
-        customList.layoutManager = LinearLayoutManager(this)
+        customList.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         InAppStoryManager.getInstance().getStackFeed(
             null,
             null,

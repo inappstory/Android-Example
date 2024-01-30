@@ -16,7 +16,7 @@ class DemoApplication : Application() {
             .apiKey(getApiKey())
             .sandbox(true)
             //.testKey(getTestKey())
-           // .context(applicationContext)
+            //.context(applicationContext)
             .create()
 
         InAppStoryManager.logger = object : InAppStoryManager.IASLogger {
@@ -32,7 +32,7 @@ class DemoApplication : Application() {
 
     companion object USER {
         fun getUserId(): String {
-            return "1332"
+            return "13332"
         }
     }
 
@@ -42,6 +42,6 @@ class DemoApplication : Application() {
     }
 
     fun getApiKey(): String? {
-        return "BSoAAAAAAAAAAAAAABYaIThgDx0GIhFYKhdBRhlHFCMoYAkNcQqZR7Czlob66R4MWU_OqlT3NT2JCAWHG8wJwRp68B8"
+        return "HDGXt7z1WVQoaN_IzLv8KdRl5f_Ghxdo"
     }
 }

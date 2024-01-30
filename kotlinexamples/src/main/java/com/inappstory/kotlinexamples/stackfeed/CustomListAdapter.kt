@@ -28,7 +28,7 @@ class CustomListAdapter(
             view.setOnClickListener {
                 stackFeedActions?.openReader(parent.context)
             }
-            return CustomListCommonViewHolder(view)
+            return CustomListStackFeedViewHolder(view)
         } else {
             return CustomListCommonViewHolder(
                 inflater.inflate(
@@ -51,7 +51,8 @@ class CustomListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         stackFeedData?.let {
-            if (holder is CustomListStackFeedViewHolder) holder.bind(it)
+            if (holder is CustomListStackFeedViewHolder)
+                holder.bind(it)
         }
     }
 }
