@@ -18,6 +18,7 @@ import com.inappstory.kotlinexamples.onboarding.OnboardingSample
 import com.inappstory.kotlinexamples.share.CustomShareSample
 import com.inappstory.kotlinexamples.simple.BasicIntegrationSample
 import com.inappstory.kotlinexamples.single.SingleStorySample
+import com.inappstory.kotlinexamples.stackfeed.StackFeedIntegrationSample
 import com.inappstory.kotlinexamples.tagsplaceholders.TagsPlaceholdersSample
 import com.inappstory.kotlinexamples.userchange.UserChangeSample
 
@@ -29,6 +30,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.simple).setOnClickListener {
             showActivity(
                 BasicIntegrationSample::class.java
+            )
+        }
+        findViewById<View>(R.id.stack).setOnClickListener {
+            showActivity(
+                StackFeedIntegrationSample::class.java
             )
         }
         findViewById<View>(R.id.advanced).setOnClickListener {

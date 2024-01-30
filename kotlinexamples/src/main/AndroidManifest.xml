@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.inappstory.kotlinexamples.stackfeed.StackFeedIntegrationSample"
+            android:exported="true"/>
         <activity android:name="com.inappstory.kotlinexamples.simple.BasicIntegrationSample"
             android:exported="true"/>
         <activity android:name="com.inappstory.kotlinexamples.advanced.AdvancedCellSample"

@@ -44,7 +44,10 @@ class NotificationSubscribeSample : AppCompatActivity() {
         val adapterCallback = false
         if (adapterCallback) {
             storiesList.setCallback(object : ListCallbackAdapter() {
-                override fun storiesLoaded(size: Int, feed: String) {
+                override fun storiesLoaded(size: Int,
+                                           feed: String?,
+                                           storyData: MutableList<StoryData>?
+                ) {
                     hideShimmer(shimmerLayout)
                 }
 
@@ -60,18 +63,12 @@ class NotificationSubscribeSample : AppCompatActivity() {
             })
         } else {
             storiesList.setCallback(object : ListCallback {
-                override fun storiesLoaded(
-                    size: Int,
-                    feed: String
-                ) {
+                override fun storiesLoaded(size: Int, feed: String?, p2: MutableList<StoryData>?) {
 
                     hideShimmer(shimmerLayout)
                 }
 
-                override fun storiesUpdated(
-                    size: Int,
-                    feed: String
-                ) {
+                override fun storiesUpdated(size: Int, feed: String?, p2: MutableList<StoryData>?) {
 
                 }
 

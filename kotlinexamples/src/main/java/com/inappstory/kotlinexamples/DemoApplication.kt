@@ -10,11 +10,13 @@ class DemoApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        InAppStoryManager.initSDK(applicationContext)
         InAppStoryManager.Builder()
             .userId(getUserId())
             .apiKey(getApiKey())
+            .sandbox(true)
             //.testKey(getTestKey())
-            .context(applicationContext)
+           // .context(applicationContext)
             .create()
 
         InAppStoryManager.logger = object : InAppStoryManager.IASLogger {
@@ -30,7 +32,7 @@ class DemoApplication : Application() {
 
     companion object USER {
         fun getUserId(): String {
-            return ""
+            return "1332"
         }
     }
 
@@ -40,6 +42,6 @@ class DemoApplication : Application() {
     }
 
     fun getApiKey(): String? {
-        return ""
+        return "BSoAAAAAAAAAAAAAABYaIThgDx0GIhFYKhdBRhlHFCMoYAkNcQqZR7Czlob66R4MWU_OqlT3NT2JCAWHG8wJwRp68B8"
     }
 }

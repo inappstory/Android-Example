@@ -31,7 +31,9 @@ class AdvancedCellSample : AppCompatActivity() {
             .csLocations(mutableListOf(0f, 0.2f, 1f))
             .csGradientHeight(-1)
         return AppearanceManager()
-            .csListItemHeight(Sizes.dpToPxExt(100))
+            .csListOpenedItemBorderColor(Color.RED)
+            //.csListOpenedItemBorderVisibility(true)
+            /*.csListItemHeight(Sizes.dpToPxExt(100))
             .csListItemRatio(1.2f)
             .csListItemTitleColor(Color.RED)
             .csTimerGradientEnable(true)
@@ -40,7 +42,7 @@ class AdvancedCellSample : AppCompatActivity() {
             .csListItemTitleSize(Sizes.dpToPxExt(12))
             .csListItemMargin(Sizes.dpToPxExt(4))
             .csCustomFont(createTypeface()) //If you want to share this font to dialogs in stories, set this appearanceManager as global
-            .csCoverQuality(if (isHQ) Image.QUALITY_HIGH else Image.QUALITY_MEDIUM)
+            .csCoverQuality(if (isHQ) Image.QUALITY_HIGH else Image.QUALITY_MEDIUM)*/
             .csListItemBorderColor(Color.GREEN)
     }
 
