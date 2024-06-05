@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import com.inappstory.kotlinexamples.ImageLoader
 import com.inappstory.kotlinexamples.R
+import com.inappstory.sdk.stories.cache.Downloader
 import com.inappstory.sdk.stories.stackfeed.IStackStoryData
-import com.inappstory.sdk.stories.stackfeed.StackStoryData
+import com.inappstory.sdk.stories.utils.RunnableCallback
 import java.io.File
 
 class CustomListStackFeedViewHolder(itemView: View) :
@@ -26,24 +27,33 @@ class CustomListStackFeedViewHolder(itemView: View) :
         title.setTextColor(bindData.titleColor())
         statuses.setStatuses(bindData.stackFeedOpenedStatuses())
         bindData.cover().let {
-            showImage(it.imageCoverPath(), it.backgroundColor(), imageView)
+            showImage(it.imageCoverPath() ?: it.feedCoverPath(), it.backgroundColor(), imageView)
         }
     }
 
     private fun showImage(url: String?, backgroundColor: Int, imageView: ImageView) {
+
         if (!url.isNullOrEmpty()) {
-            val bmp =  ImageLoader.decodeFile(File(url))
-            if (bmp == null) {
-                imageView.setImageBitmap(null);
-                imageView.setBackgroundColor(backgroundColor);
-            } else {
-                imageView.background = null;
-                imageView.setImageBitmap(bmp);
-            }
+            Downloader.downloadFileAndSendToInterface(url, object : RunnableCallback {
+                override fun run(path: String?) {
+                    if (path == null) return
+                    val bmp =  ImageLoader.decodeFile(File(path))
+                    if (bmp != null) {
+                        imageView.background = null;
+                        imageView.setImageBitmap(bmp);
+                        imageView.invalidate()
+                    }
+                }
+                override fun error() {
+                }
+            })
+
         } else {
-            imageView.setImageBitmap(null);
-            imageView.setBackgroundColor(backgroundColor)
+
         }
+
+        imageView.setImageBitmap(null);
+        imageView.setBackgroundColor(backgroundColor);
         imageView.invalidate();
     }
 }
