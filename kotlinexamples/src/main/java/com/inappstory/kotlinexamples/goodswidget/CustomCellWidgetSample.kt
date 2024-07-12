@@ -31,8 +31,8 @@ class CustomCellWidgetSample : AppCompatActivity() {
         AppearanceManager.getCommonInstance().csCustomGoodsWidget(object : ICustomGoodsWidget {
 
 
-            override fun getWidgetView(context: Context?): View {
-                TODO("Not yet implemented")
+            override fun getWidgetView(context: Context?): View? {
+                return null;
             }
 
             override fun getItem(): ICustomGoodsItem? {

@@ -21,7 +21,8 @@ android {
 
     buildTypes {
         release {
-            debuggable true
+            debuggable false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
@@ -47,7 +48,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-
+    implementation ("com.github.inappstory.android-sdk-utils:iasfilepicker:$ias_utils_version") {
+        transitive = true
+    }
     implementation("com.github.inappstory:android-sdk:$inappstory_version") {
         transitive = true
     }
