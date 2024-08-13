@@ -1,6 +1,8 @@
 package com.inappstory.kotlinexamples.custom
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
@@ -12,6 +14,7 @@ import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem
 import java.io.File
+import java.lang.RuntimeException
 
 class CustomCellSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,13 +36,14 @@ class CustomCellSample : AppCompatActivity() {
                 }
 
                 override fun setId(view: View, i: Int) {}
-                override fun setTitle(itemView: View, title: String, color: Int) {
-                    (itemView.findViewById<View>(R.id.title) as AppCompatTextView).text =
-                        title
-                    if (color != null) {
-                        (itemView.findViewById<View>(R.id.title) as AppCompatTextView).setTextColor(
-                            color
-                        )
+                override fun setTitle(itemView: View, title: String, color: Int?) {
+                    (itemView.findViewById<View>(R.id.title) as AppCompatTextView).run {
+                        text = title
+                        color?.let { color->
+                            setTextColor(
+                                color
+                            )
+                        }
                     }
                 }
 
@@ -64,7 +68,7 @@ class CustomCellSample : AppCompatActivity() {
 
     fun showImage(url: String?, backgroundColor: Int, imageView: ImageView) {
         if (!url.isNullOrEmpty()) {
-            val bmp =  ImageLoader.decodeFile(File(url))
+            val bmp = ImageLoader.decodeFile(File(url))
             if (bmp == null) {
                 imageView.setBackgroundColor(backgroundColor);
             } else {
