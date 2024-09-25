@@ -21,7 +21,7 @@ class CustomShareSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = AppearanceManager()
+        storiesList.appearanceManager = AppearanceManager().csHasShare(true)
         storiesList.loadStories()
     }
 

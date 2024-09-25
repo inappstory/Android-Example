@@ -5,17 +5,19 @@ import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.RelativeLayout
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.share.IASShareData
 import com.inappstory.sdk.share.IASShareManager
 import com.inappstory.sdk.stories.callbacks.OverlappingContainerActions
 import com.inappstory.sdk.stories.callbacks.ShareCallback
 import com.inappstory.sdk.stories.utils.Sizes
+import java.lang.ref.WeakReference
 import java.util.HashMap
 
 class CustomShareCallback : ShareCallback {
 
-    private var currentView: View? = null;
+    private var currentViewRef: WeakReference<View>? = null
 
     private var actions: OverlappingContainerActions? = null
 
@@ -26,7 +28,7 @@ class CustomShareCallback : ShareCallback {
     ): View {
         this.actions = actions;
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        currentView = inflater.inflate(R.layout.share_layout, null).apply {
+        val currentView = inflater.inflate(R.layout.share_layout, null).apply {
             findViewById<View>(R.id.background)?.also {
                 it.setOnClickListener {
                     hideAnimation(false)
@@ -47,10 +49,12 @@ class CustomShareCallback : ShareCallback {
                 }
             }
         }
-        return currentView!!;
+        currentViewRef = WeakReference(currentView)
+        return currentView
     }
 
     private fun showAnimation() {
+        val currentView = currentViewRef?.get()
         currentView?.findViewById<View>(R.id.background)
             ?.animate()?.alpha(1f)?.duration = 500;
         currentView?.findViewById<View>(R.id.bottom_panel)
@@ -58,7 +62,7 @@ class CustomShareCallback : ShareCallback {
     }
 
     fun hideAnimation(shared: Boolean) {
-
+        val currentView = currentViewRef?.get()
         currentView?.findViewById<View>(R.id.background)
             ?.animate()?.alpha(0f)?.duration = 500;
         currentView?.findViewById<View>(R.id.bottom_panel)

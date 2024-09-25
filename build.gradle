@@ -2,8 +2,8 @@
 
 buildscript {
     ext {
-        inappstory_version = "1.19.0-rc1"
-        ias_utils_version = "1.0.2"
+        inappstory_version = "d2ed88dd364a6acf31b6ad77360b78ef1c7592f6"
+        ias_utils_version = "898f4c8b981b2159b9bff0504d4db08e86b77b50"
     }
     repositories {
         google()
