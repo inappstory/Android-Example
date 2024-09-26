@@ -57,7 +57,7 @@ class StoryFavoritesActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun setImage(itemView: View, url: String, backgroundColor: Int) {
+                override fun setImage(itemView: View, url: String?, backgroundColor: Int) {
                     showImage(url, backgroundColor, itemView.findViewById(R.id.image))
                 }
 

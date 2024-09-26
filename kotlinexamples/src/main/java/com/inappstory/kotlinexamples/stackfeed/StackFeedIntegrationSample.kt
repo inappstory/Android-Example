@@ -27,50 +27,32 @@ class StackFeedIntegrationSample : AppCompatActivity() {
 
     private fun showStories() {
         val customList = findViewById<RecyclerView>(R.id.customList)
-        customList.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        customList.addItemDecoration(object : ItemDecoration() {
-            override fun getItemOffsets(
-                outRect: Rect,
-                view: View,
-                parent: RecyclerView,
-                state: RecyclerView.State
-            ) {
-                outRect.set(
-                    Sizes.dpFloatToPxExt(4f, this@StackFeedIntegrationSample),
-                    0,
-                    Sizes.dpFloatToPxExt(4f, this@StackFeedIntegrationSample),
-                    0
-                )
-            }
-        })
-        InAppStoryManager.getInstance().getStackFeed(
-            null,
-            null,
-            emptyList(),
-            AppearanceManager(),
-            object : IStackFeedResult {
-                override fun success(stackData: IStackStoryData, actions: IStackFeedActions) {
-                    lifecycleScope.launch(Dispatchers.Main) {
-                        customList.adapter = CustomListAdapter(actions, stackData)
-                    }
+        customList?.let { list->
+            list.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+            list.addItemDecoration(object : ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    outRect.set(
+                        Sizes.dpFloatToPxExt(4f, this@StackFeedIntegrationSample),
+                        0,
+                        Sizes.dpFloatToPxExt(4f, this@StackFeedIntegrationSample),
+                        0
+                    )
                 }
+            })
+            InAppStoryManager.getInstance().getStackFeed(
+                null,
+                null,
+                emptyList(),
+                AppearanceManager(),
+                StackFeedResultImpl(this)
+            )
+        }
 
-                override fun update(stackData: IStackStoryData) {
-                    lifecycleScope.launch(Dispatchers.Main) {
-                        (customList.adapter as CustomListAdapter).apply {
-                            stackFeedData = stackData
-                            notifyItemChanged(0)
-                        }
-                    }
-                }
-
-                override fun error() {
-                    lifecycleScope.launch(Dispatchers.Main) {
-                        customList.adapter = CustomListAdapter(null, null)
-                    }
-                }
-            }
-        )
     }
 
 }
