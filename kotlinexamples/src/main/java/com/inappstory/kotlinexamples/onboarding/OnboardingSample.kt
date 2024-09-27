@@ -13,10 +13,9 @@ class OnboardingSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_list)
-        InAppStoryManager.getInstance().setOnboardingLoadCallback {
-                size, feed ->
-            Toast.makeText(this, "onboarding load $size $feed", Toast.LENGTH_LONG).show()
-        }
+        InAppStoryManager.getInstance().setOnboardingLoadCallback(
+            OnboardingCallback(this)
+        )
         InAppStoryManager.getInstance()
             .showOnboardingStories(this@OnboardingSample, appearanceManager)
         showStories()

@@ -25,7 +25,7 @@ class SingleStorySample : AppCompatActivity() {
     }
 
     private fun showSingle(storyId: String?) {
-        if (storyId == null || storyId.isEmpty()) return
+        if (storyId.isNullOrEmpty()) return
         InAppStoryManager.getInstance()
             .showStory(storyId, this@SingleStorySample, appearanceManager)
     }
