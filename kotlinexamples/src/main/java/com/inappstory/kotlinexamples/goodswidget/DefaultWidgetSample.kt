@@ -42,6 +42,7 @@ class DefaultWidgetSample : AppCompatActivity() {
                 }
 
                 override fun getSkus(
+                    widgetView: View?,
                     skus: ArrayList<String>,
                     callback: GetGoodsDataCallback
                 ) {
@@ -62,6 +63,7 @@ class DefaultWidgetSample : AppCompatActivity() {
                 }
 
                 override fun onItemClick(
+                    widgetView: View?,
                     view: View?,
                     goodsItemData: GoodsItemData?,
                     callback: GetGoodsDataCallback?

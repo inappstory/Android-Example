@@ -17,7 +17,7 @@ import java.util.HashMap
 
 class CustomShareCallback : ShareCallback {
 
-    private var currentViewRef: WeakReference<View>? = null
+    private var currentView: View? = null
 
     private var actions: OverlappingContainerActions? = null
 
@@ -28,7 +28,7 @@ class CustomShareCallback : ShareCallback {
     ): View {
         this.actions = actions;
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val currentView = inflater.inflate(R.layout.share_layout, null).apply {
+        currentView = inflater.inflate(R.layout.share_layout, null).apply {
             findViewById<View>(R.id.background)?.also {
                 it.setOnClickListener {
                     hideAnimation(false)
@@ -49,12 +49,10 @@ class CustomShareCallback : ShareCallback {
                 }
             }
         }
-        currentViewRef = WeakReference(currentView)
-        return currentView
+        return currentView!!
     }
 
     private fun showAnimation() {
-        val currentView = currentViewRef?.get()
         currentView?.findViewById<View>(R.id.background)
             ?.animate()?.alpha(1f)?.duration = 500;
         currentView?.findViewById<View>(R.id.bottom_panel)
@@ -62,7 +60,6 @@ class CustomShareCallback : ShareCallback {
     }
 
     fun hideAnimation(shared: Boolean) {
-        val currentView = currentViewRef?.get()
         currentView?.findViewById<View>(R.id.background)
             ?.animate()?.alpha(0f)?.duration = 500;
         currentView?.findViewById<View>(R.id.bottom_panel)
@@ -100,7 +97,11 @@ class CustomShareCallback : ShareCallback {
         showAnimation()
     }
 
-    override fun onBackPress(actions: OverlappingContainerActions): Boolean {
+    override fun onDestroyView(p0: View?) {
+        currentView = null
+    }
+
+    override fun onBackPress(view: View?, actions: OverlappingContainerActions): Boolean {
         hideAnimation(false)
         return true
     }

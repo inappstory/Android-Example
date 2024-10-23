@@ -66,7 +66,11 @@ class CustomCellWidgetSample : AppCompatActivity() {
                 return null
             }
 
-            override fun getSkus(skus: ArrayList<String>, callback: GetGoodsDataCallback) {
+            override fun getSkus(
+                widgetView: View?,
+                skus: ArrayList<String>,
+                callback: GetGoodsDataCallback
+            ) {
                 val goodsItemData: ArrayList<GoodsItemData> = ArrayList<GoodsItemData>()
                 for (sku in skus) {
                     val data = GoodsItemData(
@@ -84,13 +88,14 @@ class CustomCellWidgetSample : AppCompatActivity() {
             }
 
             override fun onItemClick(
+                widgetView: View?,
                 view: View?,
                 goodsItemData: GoodsItemData?,
                 callback: GetGoodsDataCallback?
             ) {
                 InAppStoryManager.closeStoryReader()
                 Toast.makeText(
-                    view?.context ?: this@CustomCellWidgetSample,
+                    widgetView?.context ?: this@CustomCellWidgetSample,
                     goodsItemData.toString(), Toast.LENGTH_LONG
                 ).show()
             }
