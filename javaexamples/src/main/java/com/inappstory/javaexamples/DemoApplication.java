@@ -11,11 +11,13 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        InAppStoryManager.initSDK(getApplicationContext());
         new InAppStoryManager.Builder()
                 .userId(getUserId())
-                .sandbox(true)
+                .apiKey(getApiKey())
+               // .sandbox(true)
                 //.testKey(getTestKey())
-                .context(getApplicationContext())
+                //.context(getApplicationContext())
                 .create();
         InAppStoryManager.logger = new InAppStoryManager.IASLogger() {
             @Override
@@ -37,6 +39,9 @@ public class DemoApplication extends Application {
         //throw new UnsupportedOperationException("Not implemented yet");
     }
 
+    public String getApiKey() {
+        return "";
+    }
 
     public String getTestKey() {
         /*TODO*/
