@@ -33,7 +33,7 @@ class UserChangeSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = appearanceManager.csHasFavorite(true)
+        storiesList.setAppearanceManager(appearanceManager.csHasFavorite(true))
         storiesList.setOnFavoriteItemClick {
             val intent = Intent(this@UserChangeSample, StoryFavoritesActivity::class.java)
             startActivity(intent)

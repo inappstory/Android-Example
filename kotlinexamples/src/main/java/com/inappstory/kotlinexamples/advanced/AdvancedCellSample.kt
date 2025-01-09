@@ -7,10 +7,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
-import com.inappstory.sdk.stories.api.models.Image
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.reader.StoriesGradientObject
-import com.inappstory.sdk.stories.utils.Sizes
 
 class AdvancedCellSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,8 +57,10 @@ class AdvancedCellSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList: StoriesList = findViewById(R.id.stories_list)
-        storiesList.appearanceManager = generateAppearanceManager(
-            intent.getBooleanExtra("isHQ", false)
+        storiesList.setAppearanceManager(
+            generateAppearanceManager(
+                intent.getBooleanExtra("isHQ", false)
+            )
         )
         storiesList.loadStories()
     }

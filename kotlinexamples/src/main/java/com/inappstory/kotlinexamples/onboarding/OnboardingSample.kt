@@ -23,7 +23,7 @@ class OnboardingSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = appearanceManager
+        storiesList.setAppearanceManager(appearanceManager)
         storiesList.loadStories()
     }
 }

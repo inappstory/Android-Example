@@ -1,5 +1,6 @@
 package com.inappstory.kotlinexamples
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.inappstory.sdk.stories.utils.Sizes
@@ -8,12 +9,12 @@ import java.io.FileInputStream
 import java.lang.Exception
 
 object ImageLoader {
-    fun decodeFile(f: File): Bitmap? {
+    fun decodeFile(f: File, context: Context): Bitmap? {
         try {
             val o = BitmapFactory.Options()
             o.inJustDecodeBounds = true
             BitmapFactory.decodeStream(FileInputStream(f), null, o)
-            val REQUIRED_SIZE: Int = Sizes.dpToPxExt(800)
+            val REQUIRED_SIZE: Int = Sizes.dpToPxExt(800, context)
             var width_tmp = o.outWidth
             var height_tmp = o.outHeight
             var scale = 1

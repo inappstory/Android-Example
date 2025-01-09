@@ -34,9 +34,12 @@ class NotificationSubscribeSample : AppCompatActivity() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
         val shimmer = findViewById<ListShimmerView>(R.id.shimmer)
         val shimmerLayout = findViewById<FrameLayout>(R.id.shimmerLayout)
-        shimmer.imageWidth = Sizes.dpToPxExt(120).toFloat()
+        shimmer.imageWidth = Sizes.dpToPxExt(
+            120,
+            this@NotificationSubscribeSample
+        ).toFloat()
         shimmerLayout.visibility = View.VISIBLE
-        storiesList.appearanceManager = AppearanceManager()
+        storiesList.setAppearanceManager(AppearanceManager())
         InAppStoryManager.getInstance()
             .setShowStoryCallback { storyData, action -> }
         InAppStoryManager.getInstance()
