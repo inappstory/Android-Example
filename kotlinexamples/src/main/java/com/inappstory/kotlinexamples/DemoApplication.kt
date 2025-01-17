@@ -14,7 +14,7 @@ class DemoApplication : Application() {
         InAppStoryManager.Builder()
             .userId(getUserId())
             .apiKey(getApiKey())
-            //.sandbox(true)
+            .sandbox(true)
             //.testKey(getTestKey())
             //.context(applicationContext)
             .create()

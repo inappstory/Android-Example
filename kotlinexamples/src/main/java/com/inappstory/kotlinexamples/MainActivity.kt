@@ -13,6 +13,7 @@ import com.inappstory.kotlinexamples.feeds.FeedSample
 import com.inappstory.kotlinexamples.goodswidget.CustomCellWidgetSample
 import com.inappstory.kotlinexamples.goodswidget.CustomWidgetSample
 import com.inappstory.kotlinexamples.goodswidget.DefaultWidgetSample
+import com.inappstory.kotlinexamples.iam.InAppMessagingSample
 import com.inappstory.kotlinexamples.notification.NotificationSubscribeSample
 import com.inappstory.kotlinexamples.onboarding.OnboardingSample
 import com.inappstory.kotlinexamples.share.CustomShareSample
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.simple).setOnClickListener {
             showActivity(
                 BasicIntegrationSample::class.java
+            )
+        }
+        findViewById<View>(R.id.in_app_messages).setOnClickListener {
+            showActivity(
+                InAppMessagingSample::class.java
             )
         }
         findViewById<View>(R.id.stack).setOnClickListener {

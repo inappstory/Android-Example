@@ -25,6 +25,8 @@
             android:exported="true"/>
         <activity android:name="com.inappstory.kotlinexamples.simple.BasicIntegrationSample"
             android:exported="true"/>
+        <activity android:name="com.inappstory.kotlinexamples.iam.InAppMessagingSample"
+            android:exported="true"/>
         <activity android:name="com.inappstory.kotlinexamples.advanced.AdvancedCellSample"
             android:exported="true"/>
         <activity android:name="com.inappstory.kotlinexamples.custom.CustomCellSample"
