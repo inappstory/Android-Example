@@ -78,9 +78,15 @@ class InAppMessagingSample : AppCompatActivity() {
     }
 
     private fun preload() {
+        var id: String? = findViewById<AppCompatEditText>(R.id.iamId).text.toString()
+        if (id.isNullOrEmpty()) id = null
         InAppStoryManager.useInstance(object : UseManagerInstanceCallback() {
             override fun use(manager: InAppStoryManager) {
-                manager.preloadInAppMessages(null)
+                if (id == null) {
+                    manager.preloadInAppMessages(null)
+                } else {
+                    manager.preloadInAppMessages(listOf(id), null)
+                }
             }
         })
     }
