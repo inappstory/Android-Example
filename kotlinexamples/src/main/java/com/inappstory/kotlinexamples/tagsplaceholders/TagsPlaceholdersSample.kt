@@ -69,17 +69,10 @@ class TagsPlaceholdersSample : AppCompatActivity() {
         storiesList.loadStories()
     }
 
-    private val tagsAndPlaceholders: Unit
-        private get() {
-            InAppStoryManager.getInstance().tags
-            InAppStoryManager.getInstance().tagsString
-            InAppStoryManager.getInstance().placeholders
-            InAppStoryManager.getInstance().imagePlaceholdersValues
-        }
-
     override fun onDestroy() {
         InAppStoryManager.getInstance().tags = null
         InAppStoryManager.getInstance().placeholders = hashMapOf()
+        InAppStoryManager.getInstance().setImagePlaceholders(hashMapOf())
         super.onDestroy()
     }
 }
