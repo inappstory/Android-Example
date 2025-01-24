@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-        inappstory_version = "cf11fa6dd4772a9061dce8e6fa4f50fb4af70fde"
+        inappstory_version = "a01bd6ffe9b7d641c9aa508b81d393a6b11834cf"
         ias_utils_version = "1.0.2"
     }
     repositories {
