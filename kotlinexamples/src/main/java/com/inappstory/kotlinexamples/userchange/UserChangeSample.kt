@@ -11,9 +11,9 @@ import com.inappstory.kotlinexamples.R
 import com.inappstory.kotlinexamples.favorites.StoryFavoritesActivity
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
+import com.inappstory.sdk.core.data.models.InAppStoryUserSettings
 import com.inappstory.sdk.stories.outercallbacks.common.errors.ErrorCallbackAdapter
 import com.inappstory.sdk.stories.ui.list.StoriesList
-import java.util.*
 
 class UserChangeSample : AppCompatActivity() {
     private var appearanceManager: AppearanceManager = AppearanceManager()
@@ -43,6 +43,9 @@ class UserChangeSample : AppCompatActivity() {
             userId?.let {
                 InAppStoryManager.getInstance().setUserId(it, userSign)
             }
+        }
+        findViewById<View>(R.id.logout).setOnClickListener {
+            InAppStoryManager.getInstance().userLogout(InAppStoryUserSettings())
         }
         showStories()
     }
