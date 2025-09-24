@@ -33,6 +33,14 @@ class BannersIntegrationSample : AppCompatActivity() {
     private fun setNavigation() {
         val bannerPlace = findViewById<BannerPlace>(R.id.banner_place)
         val bannerIndex = findViewById<TextView>(R.id.banner_index)
+        val nextBanner = findViewById<TextView>(R.id.nextBanner)
+        val prevBanner = findViewById<TextView>(R.id.prevBanner)
+        nextBanner.setOnClickListener {
+            bannerPlace.showNext()
+        }
+        prevBanner.setOnClickListener {
+            bannerPlace.showPrevious()
+        }
         bannerPlace.loadCallback(object : BannerPlaceLoadCallback() {
             override fun bannerPlaceLoaded(
                 total: Int,

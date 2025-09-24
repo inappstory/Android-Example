@@ -20,6 +20,27 @@
         android:textSize="18sp"
         android:id="@+id/banner_index"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_margin="16dp"
+            android:layout_width="0dp"
+            android:id="@+id/prevBanner"
+            android:layout_weight="1"
+            android:text="Previous Banner"
+            android:background="@color/white"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:id="@+id/nextBanner"
+            android:text="Next Banner"
+            android:background="@color/white"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <!--<View
         android:layout_width="match_parent"
         android:layout_height="0dp"
