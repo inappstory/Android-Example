@@ -87,6 +87,6 @@ class DemoApplication : Application() {
     }
 
     fun getApiKey(): String? {
-        return "HDGXt7z1WVQoaN_IzLv8KdRl5f_Ghxdo"
+        return ""
     }
 }
