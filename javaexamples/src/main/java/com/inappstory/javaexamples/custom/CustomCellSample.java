@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.inappstory.javaexamples.R;
 import com.inappstory.sdk.AppearanceManager;
 import com.inappstory.sdk.stories.ui.list.StoriesList;
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem;
+import com.inappstory.sdk.stories.utils.Sizes;
 
 import java.io.File;
 
@@ -45,7 +47,15 @@ public class CustomCellSample extends AppCompatActivity {
 
                             @Override
                             public void setId(View view, int i) {
+                                View container = view.findViewById(R.id.container1);
+                                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)container.getLayoutParams();
 
+                                if (i == 5663) {
+                                    layoutParams.height = Sizes.dpToPxExt(120, CustomCellSample.this);
+                                } else {
+                                    layoutParams.height = Sizes.dpToPxExt(110, CustomCellSample.this);
+                                }
+                                container.requestLayout();
                             }
 
                             @Override

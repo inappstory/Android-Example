@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.inappstory.kotlinexamples">
 
     <application
@@ -21,51 +22,101 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.inappstory.kotlinexamples.stackfeed.StackFeedIntegrationSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.stackfeed.StackFeedIntegrationSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.simple.BasicIntegrationSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.simple.BasicIntegrationSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.iam.InAppMessagingSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.iam.InAppMessagingSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.advanced.AdvancedCellSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.advanced.AdvancedCellSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.custom.CustomCellSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.custom.CustomCellSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-
-        <activity android:name="com.inappstory.kotlinexamples.feeds.FeedSample"
-            android:exported="true"/>
-
-        <activity android:name="com.inappstory.kotlinexamples.favorites.FavoritesSample"
-            android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.favorites.StoryFavoritesActivity"
-            android:exported="true"/>
-
-        <activity android:name="com.inappstory.kotlinexamples.customreader.ReaderCustomizationSample"
-            android:exported="true"/>
-
-        <activity android:name="com.inappstory.kotlinexamples.single.SingleStorySample"
-            android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.onboarding.OnboardingSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.banners.BannersIntegrationSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
 
-        <activity android:name="com.inappstory.kotlinexamples.tagsplaceholders.TagsPlaceholdersSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.feeds.FeedSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
 
-        <activity android:name="com.inappstory.kotlinexamples.userchange.UserChangeSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.favorites.FavoritesSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
+            android:exported="true"/>
+        <activity
+            android:name="com.inappstory.kotlinexamples.favorites.StoryFavoritesActivity"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
 
-        <activity android:name="com.inappstory.kotlinexamples.notification.NotificationSubscribeSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.customreader.ReaderCustomizationSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.goodswidget.DefaultWidgetSample"
+
+        <activity
+            android:name="com.inappstory.kotlinexamples.single.SingleStorySample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.goodswidget.CustomCellWidgetSample"
+        <activity
+            android:name="com.inappstory.kotlinexamples.onboarding.OnboardingSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.goodswidget.CustomWidgetSample"
+
+        <activity
+            android:name="com.inappstory.kotlinexamples.tagsplaceholders.TagsPlaceholdersSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
-        <activity android:name="com.inappstory.kotlinexamples.share.CustomShareSample"
+
+        <activity
+            android:name="com.inappstory.kotlinexamples.userchange.UserChangeSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
+            android:exported="true"/>
+
+        <activity
+            android:name="com.inappstory.kotlinexamples.notification.NotificationSubscribeSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
+            android:exported="true"/>
+        <activity
+            android:name="com.inappstory.kotlinexamples.goodswidget.DefaultWidgetSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
+            android:exported="true"/>
+        <activity
+            android:name="com.inappstory.kotlinexamples.goodswidget.CustomCellWidgetSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
+            android:exported="true"/>
+        <activity
+            android:name="com.inappstory.kotlinexamples.goodswidget.CustomWidgetSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
+            android:exported="true"/>
+        <activity
+            android:name="com.inappstory.kotlinexamples.share.CustomShareSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
 
         <receiver android:name=".share.ShareBroadcastReceiver"/>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <!-- This entry makes NotificationManagerInitializer discoverable. -->
+            <meta-data  android:name="com.inappstory.kotlinexamples.IASInitializer"
+                android:value="androidx.startup" />
+        </provider>
     </application>
 
 </manifest>

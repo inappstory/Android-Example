@@ -2,14 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="false"
     android:background="@color/cs_half_gray"
     android:orientation="vertical">
 
-    <com.inappstory.sdk.stories.ui.list.StoriesList
-        android:id="@+id/stories_list"
+    <com.inappstory.sdk.banners.ui.place.BannerPlace
+        android:id="@+id/banner_place"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
+        app:cs_place_id="reference"
         android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:id="@+id/banner_index"
+        android:layout_height="wrap_content"/>
     <!--<View
         android:layout_width="match_parent"
         android:layout_height="0dp"

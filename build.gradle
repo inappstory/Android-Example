@@ -2,8 +2,8 @@
 
 buildscript {
     ext {
-        inappstory_version = "87dee2d640e10b6797d3b1819d5588ffb0e6ab1a"
-        ias_utils_version = "1.0.2"
+        inappstory_version = "67d5355536d91aa6d48a173e3badf6bb289f2258"
+        ias_utils_version = "07fbc4f685daf6ec378dc5ed0005ca7730e2337c"
     }
     repositories {
         google()
@@ -11,7 +11,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'com.android.tools.build:gradle:7.3.1'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20'
     }
 }

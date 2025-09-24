@@ -44,6 +44,11 @@
                 android:layout_height="wrap_content"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
+                android:text="Banners"
+                android:id="@+id/banners"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
                 android:text="Stack list"
                 android:id="@+id/stack"
                 android:layout_height="wrap_content"/>

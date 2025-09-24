@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatCheckBox
 import com.inappstory.kotlinexamples.advanced.AdvancedCellSample
+import com.inappstory.kotlinexamples.banners.BannersIntegrationSample
 import com.inappstory.kotlinexamples.custom.CustomCellSample
 import com.inappstory.kotlinexamples.customreader.ReaderCustomizationSample
 import com.inappstory.kotlinexamples.favorites.FavoritesSample
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.advanced).setOnClickListener {
             showActivity(
                 AdvancedCellSample::class.java, isHQcb.isChecked
+            )
+        }
+        findViewById<View>(R.id.banners).setOnClickListener {
+            showActivity(
+                BannersIntegrationSample::class.java
             )
         }
         findViewById<View>(R.id.custom).setOnClickListener {

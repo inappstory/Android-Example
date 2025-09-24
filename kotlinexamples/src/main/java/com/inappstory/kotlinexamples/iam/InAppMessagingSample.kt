@@ -11,6 +11,7 @@ import com.inappstory.sdk.InAppStoryManager
 import com.inappstory.sdk.UseManagerInstanceCallback
 import com.inappstory.sdk.inappmessage.InAppMessageLoadCallback
 import com.inappstory.sdk.inappmessage.InAppMessageOpenSettings
+import com.inappstory.sdk.inappmessage.InAppMessagePreloadSettings
 import com.inappstory.sdk.inappmessage.InAppMessageScreenActions
 
 class InAppMessagingSample : AppCompatActivity() {
@@ -36,7 +37,7 @@ class InAppMessagingSample : AppCompatActivity() {
         InAppStoryManager.useInstance(object : UseManagerInstanceCallback() {
             override fun use(manager: InAppStoryManager) {
                 manager.showInAppMessage(
-                    InAppMessageOpenSettings(id?.toInt(), false, event),
+                    InAppMessageOpenSettings().id(id?.toInt()).showOnlyIfLoaded(false).event(event),
                     supportFragmentManager,
                     R.id.inAppMessagesContainer,
                     object : InAppMessageScreenActions {
@@ -52,6 +53,14 @@ class InAppMessagingSample : AppCompatActivity() {
         })
     }
 
+    override fun onBackPressed() {
+        InAppStoryManager.getInstance()?.let {
+            if (it.onBackPressed())
+                return
+        }
+        super.onBackPressed()
+    }
+
     private fun showIfLoaded() {
         var id: String? = findViewById<AppCompatEditText>(R.id.iamId).text.toString()
         var event: String? = findViewById<AppCompatEditText>(R.id.eventName).text.toString()
@@ -60,7 +69,7 @@ class InAppMessagingSample : AppCompatActivity() {
         InAppStoryManager.useInstance(object : UseManagerInstanceCallback() {
             override fun use(manager: InAppStoryManager) {
                 manager.showInAppMessage(
-                    InAppMessageOpenSettings(id?.toInt(), true, event),
+                    InAppMessageOpenSettings().id(id?.toInt()).showOnlyIfLoaded(true).event(event),
                     supportFragmentManager,
                     R.id.inAppMessagesContainer,
                     object : InAppMessageScreenActions {
@@ -85,7 +94,12 @@ class InAppMessagingSample : AppCompatActivity() {
                 if (id == null) {
                     manager.preloadInAppMessages(null)
                 } else {
-                    manager.preloadInAppMessages(listOf(id), null)
+                    manager.preloadInAppMessages(
+                        InAppMessagePreloadSettings().inAppMessageIds(
+                            listOf(id)
+                        ),
+                        null
+                    )
                 }
             }
         })
