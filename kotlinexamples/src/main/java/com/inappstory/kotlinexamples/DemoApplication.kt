@@ -36,56 +36,6 @@ class DemoApplication : Application() {
         }
     }
 
-    interface WaitingInterface {
-        fun invoke(value: String) {
-
-        }
-
-        fun invoke2() {}
-    }
-
-    fun invoke(value: String) {
-
-    }
-
-    fun myMethod() {
-        getTestKey()
-        getTestKey2(
-            object : WaitingInterface {
-                override fun invoke(value: String) {
-                    //
-                }
-            }
-        )
-        val operation = ""
-    }
-
-    val lock: Any = Any()
-
-    fun getTestKey2(wait: WaitingInterface) {
-        Thread(object : Runnable {
-            override fun run() {
-                synchronized(lock) {
-                    //long time code
-                }
-            }
-
-        }).start()
-        Thread(object : Runnable {
-            override fun run() {
-                synchronized(lock) {
-                    //long time code
-                }
-            }
-        })
-
-    }
-
-    fun getTestKey(): String {
-        //long time code
-        return ""
-    }
-
     fun getApiKey(): String? {
         return ""
     }
