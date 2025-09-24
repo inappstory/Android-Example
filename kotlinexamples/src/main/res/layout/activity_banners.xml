@@ -30,16 +30,20 @@
             android:id="@+id/prevBanner"
             android:layout_weight="1"
             android:text="Previous Banner"
+            android:gravity="center"
+            android:textColor="@color/black"
             android:background="@color/white"
-            android:layout_height="wrap_content"/>
+            android:layout_height="32dp"/>
         <TextView
             android:layout_margin="16dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:layout_width="0dp"
             android:id="@+id/nextBanner"
+            android:textColor="@color/black"
             android:text="Next Banner"
             android:background="@color/white"
-            android:layout_height="wrap_content"/>
+            android:layout_height="32dp"/>
     </LinearLayout>
     <!--<View
         android:layout_width="match_parent"
