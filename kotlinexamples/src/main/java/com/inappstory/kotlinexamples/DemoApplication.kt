@@ -37,6 +37,6 @@ class DemoApplication : Application() {
     }
 
     fun getApiKey(): String? {
-        return "BcICAAAAAAAAAAAAABEaIThgEhYUJk9CMBlDT0RBDslK0Hjjr9B7Gtg5c4JPhWEPsA895aq-Rpc2ZaW0i6ij"
+
     }
 }
