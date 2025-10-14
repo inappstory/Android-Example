@@ -37,6 +37,6 @@ class DemoApplication : Application() {
     }
 
     fun getApiKey(): String? {
-
+        return null
     }
 }
