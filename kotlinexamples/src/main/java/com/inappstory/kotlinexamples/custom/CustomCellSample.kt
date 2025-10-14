@@ -1,8 +1,6 @@
 package com.inappstory.kotlinexamples.custom
 
-import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
@@ -16,7 +14,6 @@ import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.video.VideoPlayer
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem
 import java.io.File
-import java.lang.RuntimeException
 
 class CustomCellSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,13 +76,13 @@ class CustomCellSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = generateAppearanceManager()
+        storiesList.setAppearanceManager(generateAppearanceManager())
         storiesList.loadStories()
     }
 
     fun showImage(imagePath: String?, backgroundColor: Int, imageView: ImageView) {
         if (!imagePath.isNullOrEmpty()) {
-            val bmp = ImageLoader.decodeFile(File(imagePath))
+            val bmp = ImageLoader.decodeFile(File(imagePath), imageView.context)
             if (bmp == null) {
                 imageView.setBackgroundColor(backgroundColor);
             } else {

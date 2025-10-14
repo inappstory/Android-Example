@@ -35,7 +35,9 @@ class CustomShareCallback : ShareCallback {
                 }
                 it.alpha = 0f
             }
-            findViewById<View>(R.id.bottom_panel)?.translationY = Sizes.dpToPxExt(100).toFloat()
+            findViewById<View>(R.id.bottom_panel)?.translationY =
+                Sizes.dpToPxExt(100, context)
+                    .toFloat()
             val shareData = data["shareData"] as IASShareData?
             shareData?.let {
                 findViewById<View>(R.id.tg_share).setOnClickListener {
@@ -60,17 +62,22 @@ class CustomShareCallback : ShareCallback {
     }
 
     fun hideAnimation(shared: Boolean) {
-        currentView?.findViewById<View>(R.id.background)
-            ?.animate()?.alpha(0f)?.duration = 500;
-        currentView?.findViewById<View>(R.id.bottom_panel)
-            ?.animate()?.translationY(Sizes.dpToPxExt(100).toFloat())?.setDuration(500)
-            ?.setListener(object :
-                AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    super.onAnimationEnd(animation);
-                    shareWithResult(shared)
-                }
-            });
+        currentView?.apply {
+            this.findViewById<View>(R.id.background)?.animate()?.alpha(0f)?.duration = 500;
+            this.findViewById<View>(R.id.bottom_panel)
+                ?.animate()?.translationY(
+                    Sizes.dpToPxExt(100, this.context)
+                        .toFloat()
+                )?.setDuration(500)
+                ?.setListener(object :
+                    AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        super.onAnimationEnd(animation);
+                        shareWithResult(shared)
+                    }
+                });
+        }
+
     }
 
     private fun shareWithResult(result: Boolean) {

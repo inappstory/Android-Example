@@ -46,7 +46,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.14'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation ("com.github.inappstory.android-sdk-utils:iasfilepicker:$ias_utils_version") {
         transitive = true

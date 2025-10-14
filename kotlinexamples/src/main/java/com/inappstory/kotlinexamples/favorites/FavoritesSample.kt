@@ -114,11 +114,11 @@ class FavoritesSample : AppCompatActivity() {
                 }
                 else -> {
                     piece2 = RelativeLayout.LayoutParams(
-                        Sizes.dpToPxExt(42),
+                        Sizes.dpToPxExt(42, context),
                         RelativeLayout.LayoutParams.MATCH_PARENT
                     )
                     image1.layoutParams = RelativeLayout.LayoutParams(
-                        Sizes.dpToPxExt(42),
+                        Sizes.dpToPxExt(42, context),
                         RelativeLayout.LayoutParams.MATCH_PARENT
                     )
                     piece2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE)
@@ -136,7 +136,7 @@ class FavoritesSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList: StoriesList = findViewById(R.id.stories_list)
-        storiesList.appearanceManager = generateSimpleAppearanceManager()
+        storiesList.setAppearanceManager(generateSimpleAppearanceManager())
         storiesList.setOnFavoriteItemClick {
             val intent = Intent(this@FavoritesSample, StoryFavoritesActivity::class.java)
             startActivity(intent)
@@ -146,7 +146,7 @@ class FavoritesSample : AppCompatActivity() {
 
     fun showImage(url: String?, backgroundColor: Int, imageView: ImageView) {
         if (!url.isNullOrEmpty()) {
-            val bmp =  ImageLoader.decodeFile(File(url))
+            val bmp =  ImageLoader.decodeFile(File(url), imageView.context)
             if (bmp == null) {
                 imageView.setBackgroundColor(backgroundColor);
             } else {

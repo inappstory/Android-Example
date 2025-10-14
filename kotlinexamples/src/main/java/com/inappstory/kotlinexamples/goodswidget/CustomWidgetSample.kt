@@ -30,7 +30,7 @@ class CustomWidgetSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = AppearanceManager()
+        storiesList.setAppearanceManager(AppearanceManager())
         AppearanceManager.getCommonInstance().csCustomGoodsWidget(
             object : ICustomGoodsWidget {
 
@@ -60,6 +60,7 @@ class CustomWidgetSample : AppCompatActivity() {
                     getGoodsDataCallback: GetGoodsDataCallback
                 ) {
                     container?.let {
+                        val context = it.context
                         if (skus != null) {
 
                             val skuItems = skus.mapIndexed { index, s ->
@@ -83,13 +84,17 @@ class CustomWidgetSample : AppCompatActivity() {
                                     ViewGroup.LayoutParams.WRAP_CONTENT
                                 )
                                 lp.setMargins(
-                                    Sizes.dpToPxExt(16), Sizes.dpToPxExt(16),
-                                    Sizes.dpToPxExt(16), 0
+                                    Sizes.dpToPxExt(16, context),
+                                    Sizes.dpToPxExt(16, context),
+                                    Sizes.dpToPxExt(16, context),
+                                    0
                                 )
                                 textView.layoutParams = lp
                                 textView.setPadding(
-                                    Sizes.dpToPxExt(8), Sizes.dpToPxExt(8),
-                                    Sizes.dpToPxExt(8), Sizes.dpToPxExt(8)
+                                    Sizes.dpToPxExt(8, context),
+                                    Sizes.dpToPxExt(8, context),
+                                    Sizes.dpToPxExt(8, context),
+                                    Sizes.dpToPxExt(8, context)
                                 )
                                 textView.background = AppCompatResources.getDrawable(
                                     this@CustomWidgetSample,

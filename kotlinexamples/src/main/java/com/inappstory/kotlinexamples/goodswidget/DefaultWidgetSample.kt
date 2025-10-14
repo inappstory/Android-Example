@@ -22,7 +22,7 @@ class DefaultWidgetSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = AppearanceManager()
+        storiesList.setAppearanceManager(AppearanceManager())
         AppearanceManager.getCommonInstance().csCustomGoodsWidget(
             object : ICustomGoodsWidget {
                 override fun getWidgetView(context: Context?): View? {

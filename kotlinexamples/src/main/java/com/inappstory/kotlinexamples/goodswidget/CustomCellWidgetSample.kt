@@ -13,7 +13,7 @@ import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
 import com.inappstory.sdk.InAppStoryService
-import com.inappstory.sdk.imageloader.ImageLoader
+import com.inappstory.sdk.imageloader.CustomFileLoader
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.goodswidget.*
 import java.util.ArrayList
@@ -27,7 +27,7 @@ class CustomCellWidgetSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = AppearanceManager()
+        storiesList.setAppearanceManager(AppearanceManager())
         AppearanceManager.getCommonInstance().csCustomGoodsWidget(object : ICustomGoodsWidget {
 
 
@@ -46,12 +46,14 @@ class CustomCellWidgetSample : AppCompatActivity() {
                     }
 
                     override fun bindView(view: View, goodsItemData: GoodsItemData) {
-                        ImageLoader.getInstance().displayImage(
-                            goodsItemData.image,
-                            -1,
-                            view.findViewById<View>(R.id.image) as AppCompatImageView,
-                            InAppStoryService.getInstance().fastCache
-                        )
+                        CustomFileLoader().getBitmapFromUrl(goodsItemData.image) { bitmap ->
+                            runOnUiThread {
+                                (view.findViewById<View>(R.id.image) as AppCompatImageView?)?.setImageBitmap(
+                                    bitmap
+                                )
+                            }
+
+                        }
                         (view.findViewById<View>(R.id.title) as AppCompatTextView).text =
                             goodsItemData.title
                     }

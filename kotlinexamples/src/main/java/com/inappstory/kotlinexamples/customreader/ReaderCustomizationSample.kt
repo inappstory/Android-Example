@@ -23,7 +23,7 @@ class ReaderCustomizationSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = generateAppearanceManager()
+        storiesList.setAppearanceManager(generateAppearanceManager())
         storiesList.loadStories()
     }
 }

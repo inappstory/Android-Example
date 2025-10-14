@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
         android:id="@+id/userId"
-        android:hint="User ID"
+        android:hint="User Id"
         android:layout_height="wrap_content"/>
     <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
@@ -22,5 +22,10 @@
         android:layout_width="match_parent"
         android:text="Change User ID"
         android:id="@+id/change_user"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:text="Logout"
+        android:id="@+id/logout"
         android:layout_height="wrap_content"/>
 </LinearLayout>

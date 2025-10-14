@@ -8,11 +8,22 @@ import java.lang.ref.WeakReference
 class OnboardingCallback(context: Context) : OnboardingLoadCallback {
     private val contextRef = WeakReference(context)
 
-    override fun onboardingLoad(size: Int, feed: String?) {
+
+    override fun onboardingLoadSuccess(size: Int, feed: String?) {
         contextRef.get()?.let {
             Toast.makeText(
                 it,
                 "onboarding load $size $feed",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    override fun onboardingLoadError(feed: String?, reason: String?) {
+        contextRef.get()?.let {
+            Toast.makeText(
+                it,
+                "onboarding load error $feed: $reason",
                 Toast.LENGTH_LONG
             ).show()
         }

@@ -12,6 +12,7 @@ import com.inappstory.kotlinexamples.ImageLoader
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
+import com.inappstory.sdk.UseManagerInstanceCallback
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.IStoriesListItem
 import java.io.File
@@ -22,8 +23,7 @@ class StoryFavoritesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fav)
         showStories()
         findViewById<View>(R.id.removeAll).setOnClickListener {
-            if (InAppStoryManager.isNull()) return@setOnClickListener
-            InAppStoryManager.getInstance().removeAllFavorites()
+            InAppStoryManager.getInstance()?.removeAllFavorites()
         }
     }
 
@@ -43,8 +43,7 @@ class StoryFavoritesActivity : AppCompatActivity() {
 
                 override fun setId(itemView: View, id: Int) {
                     itemView.findViewById<View>(R.id.remove).setOnClickListener { v: View? ->
-                        if (InAppStoryManager.isNull()) return@setOnClickListener
-                        InAppStoryManager.getInstance().removeFromFavorite(id)
+                        InAppStoryManager.getInstance()?.removeFromFavorite(id)
                     }
                 }
 
@@ -83,7 +82,7 @@ class StoryFavoritesActivity : AppCompatActivity() {
 
     fun showImage(url: String?, backgroundColor: Int, imageView: ImageView) {
         if (!url.isNullOrEmpty()) {
-            val bmp =  ImageLoader.decodeFile(File(url))
+            val bmp =  ImageLoader.decodeFile(File(url), imageView.context)
             if (bmp == null) {
                 imageView.setBackgroundColor(backgroundColor);
             } else {

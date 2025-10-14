@@ -21,7 +21,7 @@ class FeedSample : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feed)
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = appearanceManager.csHasFavorite(false)
+        storiesList.setAppearanceManager(appearanceManager.csHasFavorite(false))
         findViewById<View>(R.id.show_onboarding).setOnClickListener {
             InAppStoryManager.getInstance()
                 .showOnboardingStories(

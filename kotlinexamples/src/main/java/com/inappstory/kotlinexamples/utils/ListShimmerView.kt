@@ -24,9 +24,9 @@ class ListShimmerView : View, ValueAnimator.AnimatorUpdateListener {
         Color.argb(CENTER_ALPHA, SHADER_COLOR_R, SHADER_COLOR_G, SHADER_COLOR_B)
     private val edgeColor = Color.argb(EDGE_ALPHA, SHADER_COLOR_R, SHADER_COLOR_G, SHADER_COLOR_B)
 
-    var vSpacing: Float = Sizes.dpToPxExt(V_SPACING_DP).toFloat()
-    var imageWidth: Float = Sizes.dpToPxExt(IMAGE_WIDTH_DP).toFloat()
-    private val cornerRadius: Float = Sizes.dpToPxExt(CORNER_RADIUS_DP).toFloat()
+    private val vSpacing: Float = Sizes.dpToPxExt(V_SPACING_DP, context).toFloat()
+    var imageWidth: Float = Sizes.dpToPxExt(IMAGE_WIDTH_DP, context).toFloat()
+    private val cornerRadius: Float = Sizes.dpToPxExt(CORNER_RADIUS_DP, context).toFloat()
 
     private var listItemPattern: Bitmap? = null
 

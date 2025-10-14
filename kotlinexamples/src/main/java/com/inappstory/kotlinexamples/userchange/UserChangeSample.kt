@@ -11,12 +11,13 @@ import com.inappstory.kotlinexamples.R
 import com.inappstory.kotlinexamples.favorites.StoryFavoritesActivity
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.InAppStoryManager
+import com.inappstory.sdk.core.data.models.InAppStoryUserSettings
 import com.inappstory.sdk.stories.outercallbacks.common.errors.ErrorCallbackAdapter
 import com.inappstory.sdk.stories.ui.list.StoriesList
-import java.util.*
 
 class UserChangeSample : AppCompatActivity() {
-    var appearanceManager: AppearanceManager = AppearanceManager()
+    private var appearanceManager: AppearanceManager = AppearanceManager()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
@@ -43,6 +44,9 @@ class UserChangeSample : AppCompatActivity() {
                 InAppStoryManager.getInstance().setUserId(it, userSign)
             }
         }
+        findViewById<View>(R.id.logout).setOnClickListener {
+            InAppStoryManager.getInstance().userLogout(InAppStoryUserSettings())
+        }
         showStories()
     }
 
@@ -53,7 +57,7 @@ class UserChangeSample : AppCompatActivity() {
 
     private fun showStories() {
         val storiesList = findViewById<StoriesList>(R.id.stories_list)
-        storiesList.appearanceManager = appearanceManager.csHasFavorite(true)
+        storiesList.setAppearanceManager(appearanceManager.csHasFavorite(true))
         storiesList.setOnFavoriteItemClick {
             val intent = Intent(this@UserChangeSample, StoryFavoritesActivity::class.java)
             startActivity(intent)

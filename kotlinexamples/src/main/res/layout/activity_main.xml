@@ -74,6 +74,11 @@
                 android:layout_height="wrap_content"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
+                android:text="In-App Messages"
+                android:id="@+id/in_app_messages"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
                 android:text="Change user"
                 android:id="@+id/change_user"
                 android:layout_height="wrap_content"/>
