@@ -1,49 +1,25 @@
 package com.inappstory.kotlinexamples.banners
 
-import android.annotation.SuppressLint
-import android.graphics.Point
-import android.graphics.Rect
-import android.os.Bundle
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.OnApplyWindowInsetsListener
-import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.inappstory.kotlinexamples.R
-import com.inappstory.sdk.InAppStoryManager
 import com.inappstory.sdk.banners.BannerPlaceLoadCallback
-import com.inappstory.sdk.banners.BannerPlaceLoadSettings
 import com.inappstory.sdk.banners.BannerPlaceNavigationCallback
 import com.inappstory.sdk.banners.ui.place.BannerPlace
 import com.inappstory.sdk.stories.outercallbacks.common.reader.BannerData
 
-class BannersIntegrationSample : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_banners)
-        //setNavigation()
-        InAppStoryManager.getInstance()
-            ?.loadBannerPlace(BannerPlaceLoadSettings().placeId("main_screen"))
-        InAppStoryManager.getInstance()
-            ?.loadBannerPlace(BannerPlaceLoadSettings().placeId("main_screen_2"))
+class BannerViewHolder(itemView: View) : ViewHolder(itemView) {
+    val bannerPlace: BannerPlace = itemView.findViewById(R.id.banner_place)
+    val bannerIndex = itemView.findViewById<TextView>(R.id.banner_index)
+    val nextBanner = itemView.findViewById<TextView>(R.id.nextBanner)
+    val prevBanner = itemView.findViewById<TextView>(R.id.prevBanner)
 
-        val rv = findViewById<RecyclerView>(R.id.rvList)
-        rv.layoutManager = LinearLayoutManager(this)
-        rv.adapter = TestAdapter()
+    fun bind(placeId: String) {
+        //bannerPlace.setPlaceId("")
+        bannerPlace.setPlaceId(placeId)
 
-    }
-
-    @SuppressLint("NewApi")
-    private fun setNavigation() {
-        val bannerPlace = findViewById<BannerPlace>(R.id.banner_place)
-        val bannerIndex = findViewById<TextView>(R.id.banner_index)
-        val nextBanner = findViewById<TextView>(R.id.nextBanner)
-        val prevBanner = findViewById<TextView>(R.id.prevBanner)
+      //  bannerPlace.setPlaceId("reference")
         nextBanner.setOnClickListener {
             bannerPlace.showNext()
         }

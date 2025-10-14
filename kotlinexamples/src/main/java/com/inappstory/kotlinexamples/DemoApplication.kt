@@ -14,7 +14,7 @@ class DemoApplication : Application() {
         InAppStoryManager.Builder()
             .userId(getUserId())
             .apiKey(getApiKey())
-            .sandbox(true)
+            .sandbox(false)
             //.testKey(getTestKey())
             //.context(applicationContext)
             .create()
@@ -32,11 +32,11 @@ class DemoApplication : Application() {
 
     companion object USER {
         fun getUserId(): String {
-            return "user0"
+            return "user212"
         }
     }
 
     fun getApiKey(): String? {
-        return ""
+        return "BcICAAAAAAAAAAAAABEaIThgEhYUJk9CMBlDT0RBDslK0Hjjr9B7Gtg5c4JPhWEPsA895aq-Rpc2ZaW0i6ij"
     }
 }
