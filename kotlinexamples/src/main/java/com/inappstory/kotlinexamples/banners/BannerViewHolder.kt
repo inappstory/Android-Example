@@ -17,6 +17,7 @@ class BannerViewHolder(itemView: View) : ViewHolder(itemView) {
 
     fun bind(placeId: String) {
         //bannerPlace.setPlaceId("")
+        bannerPlace.uniqueId(placeId)
         bannerPlace.setPlaceId(placeId)
 
       //  bannerPlace.setPlaceId("reference")
@@ -62,5 +63,6 @@ class BannerViewHolder(itemView: View) : ViewHolder(itemView) {
                 bannerIndex.text = "${current + 1}/$total"
             }
         })
+        bannerPlace.loadBanners()
     }
 }

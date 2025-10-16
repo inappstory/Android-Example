@@ -27,10 +27,10 @@ class BannersIntegrationSample : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_banners)
         //setNavigation()
-        InAppStoryManager.getInstance()
+        /*InAppStoryManager.getInstance()
             ?.loadBannerPlace(BannerPlaceLoadSettings().placeId("main_screen"))
         InAppStoryManager.getInstance()
-            ?.loadBannerPlace(BannerPlaceLoadSettings().placeId("main_screen_2"))
+            ?.loadBannerPlace(BannerPlaceLoadSettings().placeId("main_screen_2"))*/
 
         val rv = findViewById<RecyclerView>(R.id.rvList)
         rv.layoutManager = LinearLayoutManager(this)

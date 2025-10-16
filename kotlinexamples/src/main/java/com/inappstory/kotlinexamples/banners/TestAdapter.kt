@@ -30,9 +30,9 @@ class TestAdapter : RecyclerView.Adapter<ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is BannerViewHolder) {
             if (position == 10)
-                holder.bind("main_screen")
+                holder.bind("reference")
             else
-                holder.bind("main_screen_2")
+                holder.bind("buttons")
         }
     }
 }
