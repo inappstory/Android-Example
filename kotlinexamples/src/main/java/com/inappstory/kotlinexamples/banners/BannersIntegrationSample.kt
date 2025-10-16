@@ -25,17 +25,20 @@ import com.inappstory.sdk.stories.outercallbacks.common.reader.BannerData
 class BannersIntegrationSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_banners)
-        //setNavigation()
+        setContentView(R.layout.banners_layout)
+        setNavigation()
+        val bannerPlace = findViewById<BannerPlace>(R.id.banner_place)
         /*InAppStoryManager.getInstance()
             ?.loadBannerPlace(BannerPlaceLoadSettings().placeId("main_screen"))
         InAppStoryManager.getInstance()
             ?.loadBannerPlace(BannerPlaceLoadSettings().placeId("main_screen_2"))*/
 
-        val rv = findViewById<RecyclerView>(R.id.rvList)
+        /*val rv = findViewById<RecyclerView>(R.id.rvList)
         rv.layoutManager = LinearLayoutManager(this)
-        rv.adapter = TestAdapter()
-
+        rv.adapter = TestAdapter()*/
+        bannerPlace.uniqueId("reference")
+        bannerPlace.setPlaceId("reference")
+        bannerPlace.loadBanners()
     }
 
     @SuppressLint("NewApi")
