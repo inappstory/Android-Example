@@ -8,7 +8,7 @@ import com.inappstory.kotlinexamples.R
 
 class TestAdapter : RecyclerView.Adapter<ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return if (viewType == 10 || viewType == 11) {
+        return if (viewType < 3) {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.banners_layout, parent, false)
             BannerViewHolder(view)
@@ -29,10 +29,14 @@ class TestAdapter : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (holder is BannerViewHolder) {
-            if (position == 10)
-                holder.bind("reference")
-            else
-                holder.bind("buttons")
+            when (position) {
+                0 ->
+                    holder.bind("main_screen")
+                1 ->
+                    holder.bind("main_screen_2")
+                2 ->
+                    holder.bind("main_screen_3")
+            }
         }
     }
 }
