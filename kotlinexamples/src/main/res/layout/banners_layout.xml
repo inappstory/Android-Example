@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <com.inappstory.sdk.banners.ui.place.BannerPlace
+    <com.inappstory.sdk.banners.ui.carousel.BannerCarousel
         android:id="@+id/banner_place"
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"

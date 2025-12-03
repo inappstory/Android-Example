@@ -16,18 +16,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inappstory.kotlinexamples.R
 import com.inappstory.sdk.InAppStoryManager
+import com.inappstory.sdk.banners.BannerData
 import com.inappstory.sdk.banners.BannerPlaceLoadCallback
 import com.inappstory.sdk.banners.BannerPlaceLoadSettings
-import com.inappstory.sdk.banners.BannerPlaceNavigationCallback
-import com.inappstory.sdk.banners.ui.place.BannerPlace
-import com.inappstory.sdk.stories.outercallbacks.common.reader.BannerData
+import com.inappstory.sdk.banners.BannerCarouselNavigationCallback
+import com.inappstory.sdk.banners.ui.carousel.BannerCarousel
 
 class BannersIntegrationSample : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.banners_layout)
         setNavigation()
-        val bannerPlace = findViewById<BannerPlace>(R.id.banner_place)
+        val bannerPlace = findViewById<BannerCarousel>(R.id.banner_place)
         /*InAppStoryManager.getInstance()
             ?.loadBannerPlace(BannerPlaceLoadSettings().placeId("main_screen"))
         InAppStoryManager.getInstance()
@@ -43,7 +43,7 @@ class BannersIntegrationSample : AppCompatActivity() {
 
     @SuppressLint("NewApi")
     private fun setNavigation() {
-        val bannerPlace = findViewById<BannerPlace>(R.id.banner_place)
+        val bannerPlace = findViewById<BannerCarousel>(R.id.banner_place)
         val bannerIndex = findViewById<TextView>(R.id.banner_index)
         val nextBanner = findViewById<TextView>(R.id.nextBanner)
         val prevBanner = findViewById<TextView>(R.id.prevBanner)
@@ -72,7 +72,7 @@ class BannersIntegrationSample : AppCompatActivity() {
             }
 
         })
-        bannerPlace.navigationCallback(object : BannerPlaceNavigationCallback {
+        bannerPlace.navigationCallback(object : BannerCarouselNavigationCallback {
             override fun onPageScrolled(
                 current: Int,
                 total: Int,

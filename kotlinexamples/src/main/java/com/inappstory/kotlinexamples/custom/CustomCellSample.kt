@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.inappstory.kotlinexamples.ImageLoader
 import com.inappstory.kotlinexamples.R
+import com.inappstory.sdk.R as SDK_RES
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.CustomCloseIconInterface
 import com.inappstory.sdk.CustomDislikeIconInterface
@@ -39,7 +40,7 @@ class CustomCellSample : AppCompatActivity() {
             object : CustomFavoriteIconInterface() {
                 override fun createIconView(context: Context, p1: SizeF?): View {
                     val customButton = CustomButton(context);
-                    customButton.setImage(R.drawable.ic_stories_status_favorite);
+                    customButton.setImage(SDK_RES.drawable.ic_stories_status_favorite);
                     return customButton;
                 }
 
@@ -60,7 +61,7 @@ class CustomCellSample : AppCompatActivity() {
             object : CustomLikeIconInterface() {
                 override fun createIconView(context: Context, p1: SizeF?): View {
                     val customButton = CustomButton(context);
-                    customButton.setImage(R.drawable.ic_stories_status_like);
+                    customButton.setImage(SDK_RES.drawable.ic_stories_status_like);
                     return customButton;
                 }
 
@@ -81,7 +82,7 @@ class CustomCellSample : AppCompatActivity() {
             object : CustomDislikeIconInterface() {
                 override fun createIconView(context: Context, p1: SizeF?): View {
                     val customButton = CustomButton(context);
-                    customButton.setImage(R.drawable.ic_stories_status_dislike);
+                    customButton.setImage(SDK_RES.drawable.ic_stories_status_dislike);
                     return customButton;
                 }
 
@@ -102,7 +103,7 @@ class CustomCellSample : AppCompatActivity() {
             object : CustomShareIconInterface() {
                 override fun createIconView(context: Context, p1: SizeF?): View {
                     val customButton = CustomButton(context);
-                    customButton.setImage(R.drawable.ic_share_status);
+                    customButton.setImage(SDK_RES.drawable.ic_share_status);
                     return customButton;
                 }
 
@@ -123,7 +124,7 @@ class CustomCellSample : AppCompatActivity() {
             object : CustomSoundIconInterface() {
                 override fun createIconView(context: Context, p1: SizeF?): View {
                     val customButton = CustomButton(context);
-                    customButton.setImage(R.drawable.ic_stories_status_sound);
+                    customButton.setImage(SDK_RES.drawable.ic_stories_status_sound);
                     return customButton;
                 }
 
@@ -144,7 +145,7 @@ class CustomCellSample : AppCompatActivity() {
             object : CustomCloseIconInterface() {
                 override fun createIconView(context: Context, p1: SizeF?): View {
                     val customButton = CustomButton(context);
-                    customButton.setImage(R.drawable.ic_stories_close);
+                    customButton.setImage(SDK_RES.drawable.ic_stories_close);
                     return customButton;
                 }
 
@@ -158,7 +159,7 @@ class CustomCellSample : AppCompatActivity() {
             object : CustomRefreshIconInterface() {
                 override fun createIconView(context: Context, p1: SizeF?): View {
                     val customButton = CustomButton(context);
-                    customButton.setImage(R.drawable.ic_refresh);
+                    customButton.setImage(SDK_RES.drawable.ic_refresh);
                     return customButton;
                 }
 

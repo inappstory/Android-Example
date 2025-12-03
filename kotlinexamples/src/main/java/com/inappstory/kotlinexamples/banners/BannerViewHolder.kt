@@ -4,13 +4,13 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.inappstory.kotlinexamples.R
+import com.inappstory.sdk.banners.BannerData
 import com.inappstory.sdk.banners.BannerPlaceLoadCallback
-import com.inappstory.sdk.banners.BannerPlaceNavigationCallback
-import com.inappstory.sdk.banners.ui.place.BannerPlace
-import com.inappstory.sdk.stories.outercallbacks.common.reader.BannerData
+import com.inappstory.sdk.banners.BannerCarouselNavigationCallback
+import com.inappstory.sdk.banners.ui.carousel.BannerCarousel
 
 class BannerViewHolder(itemView: View) : ViewHolder(itemView) {
-    val bannerPlace: BannerPlace = itemView.findViewById(R.id.banner_place)
+    val bannerPlace: BannerCarousel = itemView.findViewById(R.id.banner_place)
     val bannerIndex = itemView.findViewById<TextView>(R.id.banner_index)
     val nextBanner = itemView.findViewById<TextView>(R.id.nextBanner)
     val prevBanner = itemView.findViewById<TextView>(R.id.prevBanner)
@@ -46,7 +46,7 @@ class BannerViewHolder(itemView: View) : ViewHolder(itemView) {
             }
 
         })
-        bannerPlace.navigationCallback(object : BannerPlaceNavigationCallback {
+        bannerPlace.navigationCallback(object : BannerCarouselNavigationCallback {
             override fun onPageScrolled(
                 current: Int,
                 total: Int,

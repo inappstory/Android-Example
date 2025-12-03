@@ -39,6 +39,8 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+
+    namespace 'com.inappstory.kotlinexamples'
 }
 
 dependencies {
@@ -52,9 +54,10 @@ dependencies {
     implementation ("com.github.inappstory.android-sdk-utils:iasfilepicker:$ias_utils_version") {
         transitive = true
     }
-    implementation("com.github.inappstory:android-sdk:$inappstory_version") {
+    implementation "io.github.inappstory:android-sdk:1.22.0"
+    /*implementation("com.github.inappstory:android-sdk:$inappstory_version") {
         transitive = true
-    }
+    }*/
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

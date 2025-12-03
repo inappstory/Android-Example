@@ -14,6 +14,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.inappstory.kotlinexamples.R
+import com.inappstory.sdk.R as SDK_RES
 import com.inappstory.sdk.AppearanceManager
 import com.inappstory.sdk.stories.ui.list.StoriesList
 import com.inappstory.sdk.stories.ui.views.goodswidget.*
@@ -101,7 +102,7 @@ class CustomWidgetSample : AppCompatActivity() {
                                     R.drawable.widget_background_solid
                                 )
                                 textView.textSize = 18f
-                                textView.setTextColor(resources.getColor(R.color.white))
+                                textView.setTextColor(resources.getColor(SDK_RES.color.white))
                                 textView.text = sku
                                 textView.setOnClickListener {
                                     getGoodsDataCallback.itemClick(sku)
