@@ -50,14 +50,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.startup:startup-runtime:1.0.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.14'
-    implementation ("com.github.inappstory.android-sdk-utils:iasfilepicker:$ias_utils_version") {
+
+    implementation("com.github.inappstory:android-sdk:$inappstory_version") {
         transitive = true
     }
-    implementation "io.github.inappstory:android-sdk:1.22.0"
-    /*implementation("com.github.inappstory:android-sdk:$inappstory_version") {
-        transitive = true
-    }*/
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

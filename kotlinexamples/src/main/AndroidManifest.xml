@@ -31,6 +31,10 @@
             android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
         <activity
+            android:name="com.inappstory.kotlinexamples.checkout.CheckoutIntegrationSample"
+            android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
+            android:exported="true"/>
+        <activity
             android:name="com.inappstory.kotlinexamples.iam.InAppMessagingSample"
             android:theme="@style/Theme.InAppStoryDemo.NoActionBar"
             android:exported="true"/>
